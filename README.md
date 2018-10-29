@@ -11,3 +11,5 @@ Tämä teksti on *kursivoitu*.
 Laskarien vastaukset löytyvät täältä: [gitlog](https://github.com/learntopilk/ot_harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt) sekä [komentorivi](https://github.com/learntopilk/ot_harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
 Haluan myös käyttää `codeblockia.`
+
+> Tämä rivi lisätty paikallisella koneella.
