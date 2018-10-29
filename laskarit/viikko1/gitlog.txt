@@ -1,0 +1,115 @@
+commit 2a72adb03ddd2ef6571ec00231198772cc5c8e0a
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:29:33 2018 +0200
+
+    poistettiin ja muutettiin
+
+ tiedostoja/file1             | 1 -
+ tiedostoja/{file2 => file22} | 0
+ 2 files changed, 1 deletion(-)
+
+commit 0ca5b0122377d8366fbe830e1c150b4278586b39
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:27:12 2018 +0200
+
+    added file2
+
+ kolmas.txt       | 2 +-
+ tiedostoja/file1 | 1 +
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 4 files changed, 2 insertions(+), 1 deletion(-)
+
+commit c41608adb8cdab73a83048d5366d924352077430
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:22:36 2018 +0200
+
+    lisää muutoksia
+
+ eka.txt    | 22 +++++++++++-----------
+ kolmas.txt |  5 +++++
+ 2 files changed, 16 insertions(+), 11 deletions(-)
+
+commit d8074e91c06419cd6223f66b39a15eeed159833d
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:21:20 2018 +0200
+
+    muutettu tiedoston nii ekaksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 4b7e70f7529074308dc2ea14dafbb0e53f6df713
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:20:35 2018 +0200
+
+    poistettu toinen
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8251c3a49034907be58ef5993fe171340844fe5b
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:20:04 2018 +0200
+
+    lisätty siansaksaa
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 2e42bec0cef87f955734bca9bf045805ddd46d68
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:19:41 2018 +0200
+
+    muutettu tiedostoa taas, poistettu kamaa
+
+ tiedosto.txt | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+commit 9b240999a2e40ed529846259e47a5cd44c7e67f1
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:19:03 2018 +0200
+
+    muutettu tiedostia
+
+ tiedosto.txt | 632 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 632 insertions(+)
+
+commit 229bb386d41c0048ff32214f855f5a8bf30626d7
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:17:47 2018 +0200
+
+    lisätty kansio ja tiedosto
+
+ stuff/yksi.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d4416818b7101f73c32c50c6ed0e9c74cd65be8b
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:17:08 2018 +0200
+
+    lisätty kolmast
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit d8316e154ee527dd730b31a7def34b573139cea5
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:16:08 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 4f6e240e50ffc29e40557ec8c998058e6aac7c52
+Author: joonas <jonsterivilja@hotmail.com>
+Date:   Mon Oct 29 15:15:23 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+
