@@ -38,4 +38,10 @@ public class MaksukorttiTest {
     public void saldoVaheneeJosRahaaOnTarpeeksi(){
         assertEquals(kortti.otaRahaa(5), true);
     }
+    
+    @Test
+    public void saldoToimii(){
+        System.out.println(kortti.saldo());
+        assertEquals(kortti.saldo(), 10);
+    }
 }
