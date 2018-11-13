@@ -13,3 +13,9 @@ Laskarien vastaukset löytyvät täältä: [gitlog](https://github.com/learntopi
 Haluan myös käyttää `codeblockia.`
 
 > Tämä rivi lisätty paikallisella koneella.
+
+### Viikko 2
+
+Tehty [Maarittelydokumentti.md](ot_harjoitustyo/dokumentointi/Maarittelydokumentti.md) sekä [tyoajanseuranta](ot_harjoitustyo/dokumentointi/tyoaikakirjanpito.md).
+
+Laskarit löytyvät kansiosta  ot_harjoitustyö/laskarit/viikko2.

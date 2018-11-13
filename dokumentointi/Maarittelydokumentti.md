@@ -1,6 +1,4 @@
-# Vaatimusmäärittely
-
-## Misk
+# Vaatimusmäärittely: Misk
 
 ..eli Mini-Risk.
 
@@ -9,6 +7,10 @@
 Misk on Risk-klooni. Pelaajat hyökkäävät toisiaan vastaan vallatakseen alueita. Pelaajat saavat joukkoja kunkin vuoron alussa hallussa pitämiensä alueiden arvon mukaisesti. Peli loppuun kun jäljellä on yksi pelaaja.
 
 Pelaaja voi hyökätä mistä tahansa omistamastaan ruudusta sen viereiseen ruutuun.
+
+### Käyttäjät
+
+Perussovellukseen ei tule nimimerkkiä monimutkaisempaa käyttäjätoimintoa. 
 
 ### Sovelluksen minimimuoto:
 
