@@ -6,6 +6,7 @@
 package com.mycompany.mrisk.GUI.Game;
 
 import GUI.StartScreen;
+import java.util.HashMap;
 
 /**
  *
@@ -13,11 +14,22 @@ import GUI.StartScreen;
  */
 public class Game {
     
+    // Maps player names to player numbers
+    HashMap<String, Integer> players;
+    
     public static void main(String[] args) {
-        //System.out.println("Starting...");
-        //StartScreen s = new StartScreen();
         
-        //s.
+    }
+    
+    public Game() {
+        this.players = new HashMap<>();
+    }
+    
+    public void addPlayer(String name) {
+        
+    }
+    
+    public void attack(int attacker, int defender) {
         
     }
 }

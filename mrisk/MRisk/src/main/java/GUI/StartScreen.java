@@ -22,6 +22,9 @@ import javafx.stage.Stage;
  */
 public class StartScreen extends Application{
     
+    private Scene p;
+    private Stage stage;
+    private Scene start;
     
     public StartScreen () {
         
@@ -37,6 +40,7 @@ public class StartScreen extends Application{
         
     @Override
     public void start(Stage primaryStage) {
+        this.stage = primaryStage;
         primaryStage.setTitle("M-RISK");
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
@@ -44,6 +48,7 @@ public class StartScreen extends Application{
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
+                btn.setText("Hello World said");
             }
         });
         Button startGame = new Button();
@@ -71,10 +76,11 @@ public class StartScreen extends Application{
             @Override
             public void handle (ActionEvent event) {
                 System.out.println("Opening statistics...");
+                goToStats();
             }
         });
         
-        StackPane root = new StackPane();
+        //StackPane root = new StackPane();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(20);
@@ -85,32 +91,50 @@ public class StartScreen extends Application{
         grid.add(seeStats, 0, 2);
         grid.add(quitGame, 0, 3);
         
-        Scene startScene = new Scene(grid, 700, 500);
-        
+        Scene startScene = new Scene(grid, 900, 700);
+        this.start = startScene;
         //root.getChildren().add(btn);
         //root.getChildren().add(startGame);
         
         //root.autosize();
         
         //primaryStage.setScene(new Scene(root, 600, 800));
-        primaryStage.setScene(startScene);
+        
+        p = startScene;
+        primaryStage.setScene(p);
         primaryStage.show();
     }
     
     private void goToGameScreen() {
         
+        //primaryStage.setScene();
     }
     
     private void goToStartScreen() {
-        
+        stage.setScene(start);
     }
     
     private void goToStats() {
+        GridPane statGrid = new GridPane();
         
+        Button returnBtn = new Button();
+        returnBtn.setText("Back to Main");
+        returnBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                goToStartScreen();
+            }
+        });
+        // Should this be in its own class?
+        statGrid.setAlignment(Pos.CENTER);
+        statGrid.add(returnBtn, 0, 0);
+        Scene statScene = new Scene(statGrid, 900, 700);
+        System.out.println("1");
+        stage.setScene(statScene);
     }
     
     private void quit() {
-        // TODO: kutsu tallennusta?
+        // TODO: see if saving is necessary here?
         System.exit(0);
     }
 }
