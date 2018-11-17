@@ -5,6 +5,7 @@
  */
 package GUI;
  
+import Game.Game;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -25,6 +26,8 @@ public class StartScreen extends Application{
     private Scene p;
     private Stage stage;
     private Scene start;
+    private Scene gameScene;
+    private Game game;
     
     public StartScreen () {
         
@@ -95,9 +98,7 @@ public class StartScreen extends Application{
         this.start = startScene;
         //root.getChildren().add(btn);
         //root.getChildren().add(startGame);
-        
         //root.autosize();
-        
         //primaryStage.setScene(new Scene(root, 600, 800));
         
         p = startScene;
