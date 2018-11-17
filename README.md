@@ -16,6 +16,6 @@ Haluan myös käyttää `codeblockia.`
 
 ### Viikko 2
 
-Tehty [Maarittelydokumentti.md](ot_harjoitustyo/dokumentointi/Maarittelydokumentti.md) sekä [tyoajanseuranta](ot_harjoitustyo/dokumentointi/tyoaikakirjanpito.md).
+Tehty [Maarittelydokumentti.md](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) sekä [tyoajanseuranta](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md).
 
 Laskarit löytyvät kansiosta  ot_harjoitustyö/laskarit/viikko2.
