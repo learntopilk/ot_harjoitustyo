@@ -1,0 +1,42 @@
+
+title HSL
+
+Main -> laitehallinto: new HKLLaiteHallinto()
+
+Main -> rautatietori: Lataajalaite()
+
+Main -> ratikka6: new Lukijalaite()
+
+Main -> bussi244: new LukijaLaite()
+
+Main -> laitehallinto: lisaalataaja(rautatietori)
+laitehallinto->laitehallinto: lataajat.add(rautatietori)
+Main -> laitehallinto: lisaalukija(ratikka6)
+laitehallinto->laitehallinto: lukijat.add(ratikka6)
+Main -> laitehallinto: lisaalukija(bussi244)
+laitehallinto->laitehallinto: lukijat.add(bussi244)
+
+
+Main -> lippuLuukku:  new Kioski()
+
+Main -> lippuluukku: ostaMatkakortti("arto")
+lippuluukku -> artonKortti: new Matkakortti("arto")
+artonKortti -> artonKortti: omistaja = "arto";
+artonKortti -> lippuluukku: artonKortti
+lippuluukku -> Main: artonKortti
+
+Main -> rautatietori: lataaArvoa(artonkortti, 3)
+rautatietori -> artonKortti: artonKortti.kasvataArvoa(3)
+artonKortti -> artonKortti: arvo += 3
+Main -> ratikka6: ostaLippu(artonkortti, 0)
+
+ratikka6 -> ratikka6: hinta -> 1.5
+ratikka6 -> artonKortti: getArvo()
+ratikka6 -> artonKortti: vahennaArvoa(hinta)
+artonKortti -> artonKortti: arvo -= hinta
+ratikka6 -> Main: true
+
+Main -> bussi244: ostaLippu(artonKortti, 2)
+ratikka6 -> ratikka6: hinta = 2.1
+ratikka6 -> artonKortti: getArvo()
+ratikka6 -> Main: false
