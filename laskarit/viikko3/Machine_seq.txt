@@ -1,0 +1,27 @@
+title Creation and starting of Machine
+
+CallFromOutside->Machine: Machine.Machine()
+Machine-> FuelTank: FuelTank.FuelTank()
+FuelTank -> FuelTank: fuelContents = 0;
+Machine -> FuelTank: fuelTank.fill(40)
+FuelTank -> FuelTank: fuelContents = 40;
+Machine -> Engine: Engine.Engine(FuelTank);
+Engine -> Engine: fuelTank = tank;
+
+note right of Machine: Someone Calls Machine.drive()
+CallFromOutside->Machine: Machine.drive()
+Machine->Engine: Engine.start()
+Engine->FuelTank: fueltank.consume(5)
+FuelTank->FuelTank: fuelcontents -= 5;
+Machine->Engine: engine.isRunning();
+Engine->FuelTank: fuelTank.contentsLeft()
+FuelTank->Engine: fuelContents
+Engine->Machine: fuelTank.contentsLeft() > 0
+
+alt Engine.isRunning() == true;
+    Machine->Engine: engine.useEnergy();
+    Engine->FuelTank: fuelTank.consume(10)
+    FuelTank->FuelTank: fuelcontents -= 10;
+else Engine.isRunning() == false;
+    
+end
