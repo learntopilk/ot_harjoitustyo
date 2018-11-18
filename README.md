@@ -1,21 +1,32 @@
-# Ohjelmistotekniikan harjoitusrepositorio
+# MRisk
 
-Mös. Tämä on Ohjelmistotekniikka-kurssin harjoitusrepositorio, jonne palautetaan kurssin laskarit sekä harjoitustyö.
+MRisk is a minimal implementation of the classic board game Risk. As a minimal requirement, the game will allow two human players to play a full game of Risk against each other in the Southeastern United States.
 
-Tämä teksti on nyt suomeksi, mutta jatkossa kaikki kirjoitetaan **englanniksi**.
+I hope to be able to add more/larger maps once the map mechanics are better defined.
 
-Tämä teksti on *kursivoitu*.
 
-### Viikko 1
+## Documentation
 
-Laskarien vastaukset löytyvät täältä: [gitlog](https://github.com/learntopilk/ot_harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt) sekä [komentorivi](https://github.com/learntopilk/ot_harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+Instructions (TODO)
 
-Haluan myös käyttää `codeblockia.`
+[Project requirements](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) (In Finnish)
 
-> Tämä rivi lisätty paikallisella koneella.
+Project architecture (TODO)
 
-### Viikko 2
+About tests
 
-Tehty [Maarittelydokumentti.md](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) sekä [tyoajanseuranta](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md).
+[Time spent](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
-Laskarit löytyvät kansiosta  ot_harjoitustyö/laskarit/viikko2.
+## Command Line magic
+
+#### Testing
+
+You can run tests with 
+```
+mvn test
+```
+
+Generate a test coverage report with 
+```
+mvn jacoco:report
+```

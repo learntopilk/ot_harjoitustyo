@@ -20,4 +20,18 @@ public class PlayerTest {
     public void setUp() {
         p = new Player();
     }
+    
+    @Test
+    public void defaultNameIsPlayer() {
+        String name = p.getName();
+        System.out.println("name " + name);
+        assertEquals(name, "Player");
+    }
+    
+    @Test
+    public void initialNumberOfTroopsToSet() {
+        int troops = p.getTroopsToSet();
+        assertEquals(troops, 10);
+        
+    }
 }

@@ -21,21 +21,24 @@ public class Player {
     public Player(int num, String name) {
         this.num = num;
         this.name = name;
+        this.troopsToSet = 10;
     }
     
     public Player(int num) {
         this.num = num;
         this.name = "Player " + num;
+        this.troopsToSet = 10;
     }
     
     public Player() {
-        
+        this.name = "Player";
+        this.troopsToSet = 10;
     }
     public int getNum() {
         return this.num;
     }
     
-    public String getname() {
+    public String getName() {
         return this.name;
     }
     
@@ -43,7 +46,7 @@ public class Player {
         this.troopsToSet += num;
     }
     
-    public int getTroopsToSet() {
+    public Integer getTroopsToSet() {
         return this.troopsToSet;
     }
     
