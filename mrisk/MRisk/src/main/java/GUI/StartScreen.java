@@ -6,6 +6,8 @@
 package GUI;
  
 import Game.Game;
+//import java.awt.Image;
+import javafx.scene.image.Image;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -13,6 +15,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -23,11 +30,14 @@ import javafx.stage.Stage;
  */
 public class StartScreen extends Application{
     
+    private final int HEIGHT=768;
+    private final int WIDTH=699;
     private Scene p;
     private Stage stage;
     private Scene start;
     private Scene gameScene;
     private Game game;
+    BackgroundImage bg;// = new BackgroundImage(new Image("./f1.png", 32,32) {});
     
     public StartScreen () {
         
@@ -43,6 +53,8 @@ public class StartScreen extends Application{
         
     @Override
     public void start(Stage primaryStage) {
+        bg = new BackgroundImage(new Image("/f1.png", HEIGHT,WIDTH,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+         
         this.stage = primaryStage;
         primaryStage.setTitle("M-RISK");
         Button btn = new Button();
@@ -85,6 +97,7 @@ public class StartScreen extends Application{
         
         //StackPane root = new StackPane();
         GridPane grid = new GridPane();
+        grid.setBackground(new Background(bg));
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(20);
         grid.setVgap(20);
