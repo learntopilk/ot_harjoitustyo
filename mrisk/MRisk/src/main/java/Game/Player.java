@@ -22,6 +22,7 @@ public class Player {
         this.num = num;
         this.name = name;
         this.troopsToSet = 10;
+        this.color = Color.BLUE;
     }
     
     public Player(int num) {
@@ -33,6 +34,12 @@ public class Player {
     public Player() {
         this.name = "Player";
         this.troopsToSet = 10;
+    }
+    
+    public Player(Color color) {
+        this.name = "Player";
+        this.troopsToSet = 10;
+        this.color = color;
     }
     
     public int getNum() {
@@ -53,6 +60,10 @@ public class Player {
     
     public void removeOneTroop() {
         this.troopsToSet--;
+    }
+    
+    public Color getColor() {
+        return this.color;
     }
     
 }

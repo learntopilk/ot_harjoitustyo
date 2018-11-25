@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 public class CountryView {
     private Country country;
     public ImageView i;
+    //private 
     
     public CountryView(Country country) {
         this.country = country;

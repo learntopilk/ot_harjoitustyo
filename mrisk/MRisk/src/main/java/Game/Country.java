@@ -19,10 +19,14 @@ public class Country {
     private Integer troops;
     public ImageView img;
     private String ImageURI;
+    private int index;
+    private boolean selected;
     
-    public Country(String name, String ImageURI, int value) {
+    public Country(String name, String ImageURI, int value, int index) {
         this.name = name;
         this.value = value;
+        this.index = index;
+        this.selected = false;
         //img = new ImageView(ImageURI);
     }
     
@@ -52,6 +56,20 @@ public class Country {
     
     public int getTroops() {
         return this.troops;
+    }
+    
+    public int getIndex() {
+        return this.index;
+    }
+    
+    public void select() {
+        this.selected = true;
+        //OTHER THINGS
+    }
+    
+    public void deselect() {
+        this.selected = false;
+        // Other things
     }
     
     

@@ -6,6 +6,7 @@
 package GUI;
 
 import Game.Game;
+import Game.Player;
 //import java.awt.Image;
 import javafx.scene.image.Image;
 import javafx.application.Application;
@@ -15,6 +16,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -25,6 +28,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -43,7 +47,7 @@ public class StartScreen extends Application {
     BackgroundImage bg;
 
     public StartScreen() {
-
+        game = new Game();
     }
 
     public void begin() {
@@ -174,14 +178,38 @@ public class StartScreen extends Application {
         });
 
         pane.getChildren().add(menuBtn);
-        //ImageView img = new ImageView();
-        ImageView florida = new ImageView("/florida.png");
-        //Image florida = new Image("/florida.png", 32, 32, false, false);
+        Image fl = new Image("/florida.png");
+        //ImageView florida = new ImageView("/florida.png");
+        ImageView florida = new ImageView(fl);
         florida.setPickOnBounds(false);
         florida.setOnMouseClicked((MouseEvent e) -> {
+            Lighting lighting = new Lighting();
+            lighting.setDiffuseConstant(1.0);
+            lighting.setSpecularConstant(0.0);
+            lighting.setSpecularExponent(0.0);
+            lighting.setSurfaceScale(0.0);
+            lighting.setLight(new Light.Distant(45, 45, game.getCurrentPlayer().getColor()));
             System.out.println("clicked Florida!");
+            florida.setEffect(lighting);
         });
 
+        Image ge = new Image("/georgia.png");
+        ImageView georgia = new ImageView(ge);
+        georgia.setPickOnBounds(false);
+        georgia.setOnMouseClicked((MouseEvent e) -> {
+            Lighting lighting = new Lighting();
+            lighting.setDiffuseConstant(1.0);
+            lighting.setSpecularConstant(0.0);
+            lighting.setSpecularExponent(0.0);
+            lighting.setSurfaceScale(0.0);
+            lighting.setLight(new Light.Distant(45, 45, Color.PURPLE));
+            System.out.println("clicked Georgia!");
+            georgia.setEffect(lighting);
+        });
+
+        pane.getChildren().add(georgia);
+        georgia.setLayoutX(460d);
+        georgia.setLayoutY(289d);
         pane.getChildren().add(florida);
         florida.setLayoutX(408d);
         florida.setLayoutY(453d);
