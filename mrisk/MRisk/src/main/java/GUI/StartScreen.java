@@ -179,7 +179,6 @@ public class StartScreen extends Application {
 
         pane.getChildren().add(menuBtn);
         Image fl = new Image("/florida.png");
-        //ImageView florida = new ImageView("/florida.png");
         ImageView florida = new ImageView(fl);
         florida.setPickOnBounds(false);
         florida.setOnMouseClicked((MouseEvent e) -> {
