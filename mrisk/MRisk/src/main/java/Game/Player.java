@@ -34,6 +34,7 @@ public class Player {
         this.name = "Player";
         this.troopsToSet = 10;
     }
+    
     public int getNum() {
         return this.num;
     }

@@ -40,6 +40,7 @@ public class Game {
     }
     
     public void attack(int attacker, int defender) {
+        
     }
     
     public void start() {

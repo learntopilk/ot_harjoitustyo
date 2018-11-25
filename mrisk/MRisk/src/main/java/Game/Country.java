@@ -5,6 +5,8 @@
  */
 package Game;
 
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author joonas
@@ -15,10 +17,13 @@ public class Country {
     private Player owner;
     private int value;
     private Integer troops;
+    public ImageView img;
+    private String ImageURI;
     
-    public Country(String name, int value) {
+    public Country(String name, String ImageURI, int value) {
         this.name = name;
         this.value = value;
+        //img = new ImageView(ImageURI);
     }
     
     public String getName() {
@@ -39,6 +44,10 @@ public class Country {
     
     public void setTroops(int number) {
         this.troops = number;
+    }
+    
+    public String getImageURI() {
+        return this.ImageURI;
     }
     
     public int getTroops() {
