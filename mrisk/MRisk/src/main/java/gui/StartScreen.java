@@ -7,7 +7,6 @@ package gui;
 
 import game.Game;
 import game.Player;
-//import java.awt.Image;
 import javafx.scene.image.Image;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
