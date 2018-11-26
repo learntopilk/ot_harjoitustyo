@@ -11,7 +11,7 @@ Instructions (TODO)
 
 [Project requirements](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) (In Finnish)
 
-Project architecture (TODO)
+[Project architecture](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 About tests
 
