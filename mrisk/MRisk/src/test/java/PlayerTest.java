@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,6 +6,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import Game.Player;
+import javafx.scene.paint.Color;
+
 /**
  *
  * @author joonas
@@ -32,6 +30,11 @@ public class PlayerTest {
     public void initialNumberOfTroopsToSet() {
         int troops = p.getTroopsToSet();
         assertEquals(troops, 10);
-        
+    }
+    
+    @Test
+    public void playerColorIsSet() {
+        Player p2 = new Player(Color.RED);
+        assertEquals(p2.getColor(), Color.RED);
     }
 }
