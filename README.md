@@ -36,3 +36,11 @@ Generate a test coverage report with
 ```
 mvn jacoco:report
 ```
+
+#### Checkstyle
+
+Check out my sweet checkstyle by checking in the following spell:
+
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
