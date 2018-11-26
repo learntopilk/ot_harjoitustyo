@@ -37,8 +37,8 @@ import javafx.stage.Stage;
  */
 public class StartScreen extends Application {
 
-    private final int HEIGHT = 768;
-    private final int WIDTH = 699;
+    private final int screenHeight = 768;
+    private final int screenWidth = 699;
     private Scene p;
     private Stage stage;
     private Scene start;
@@ -60,7 +60,7 @@ public class StartScreen extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        bg = new BackgroundImage(new Image("/f1.png", HEIGHT, WIDTH, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        bg = new BackgroundImage(new Image("/f1.png", screenHeight, screenWidth, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
         this.stage = primaryStage;
         primaryStage.setTitle("M-RISK");

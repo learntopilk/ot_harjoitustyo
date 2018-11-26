@@ -18,11 +18,11 @@ public class Country {
     private int value;
     private Integer troops;
     public ImageView img;
-    private String ImageURI;
+    private String imageUri;
     private int index;
     private boolean selected;
     
-    public Country(String name, String ImageURI, int value, int index) {
+    public Country(String name, String imageUri, int value, int index) {
         this.name = name;
         this.value = value;
         this.index = index;
@@ -50,8 +50,8 @@ public class Country {
         this.troops = number;
     }
     
-    public String getImageURI() {
-        return this.ImageURI;
+    public String getImageUri() {
+        return this.imageUri;
     }
     
     public int getTroops() {
