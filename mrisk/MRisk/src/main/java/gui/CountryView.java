@@ -1,6 +1,6 @@
-package GUI;
+package gui;
 
-import Game.Country;
+import game.Country;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 

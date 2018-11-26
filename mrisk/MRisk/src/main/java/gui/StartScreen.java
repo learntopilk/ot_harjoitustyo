@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
-import Game.Game;
-import Game.Player;
+import game.Game;
+import game.Player;
 //import java.awt.Image;
 import javafx.scene.image.Image;
 import javafx.application.Application;

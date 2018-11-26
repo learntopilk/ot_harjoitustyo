@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Game;
+package game;
 
-import GUI.StartScreen;
+import gui.StartScreen;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
