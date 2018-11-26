@@ -4,6 +4,12 @@ MRisk is a minimal implementation of the classic board game Risk. As a minimal r
 
 I hope to be able to add more/larger maps once the map mechanics are better defined.
 
+## Update on development
+
+The application is progressing slowly. At the moment, I'm working on country mechanics, colors, and basic selecting. Once that is done, I'll complete all player functionality for a full test. 
+
+After these are done, I will create the whole map. No point
+
 
 ## Documentation
 
