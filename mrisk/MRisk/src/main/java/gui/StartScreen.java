@@ -5,6 +5,7 @@
  */
 package gui;
 
+import game.Country;
 import game.Game;
 import game.Player;
 import javafx.scene.image.Image;
@@ -101,7 +102,6 @@ public class StartScreen extends Application {
             }
         });
 
-        //StackPane root = new StackPane();
         GridPane grid = new GridPane();
         grid.setBackground(new Background(bg));
         grid.setAlignment(Pos.CENTER);
@@ -115,10 +115,6 @@ public class StartScreen extends Application {
 
         Scene startScene = new Scene(grid, 900, 700);
         this.start = startScene;
-        //root.getChildren().add(btn);
-        //root.getChildren().add(startGame);
-        //root.autosize();
-        //primaryStage.setScene(new Scene(root, 600, 800));
 
         p = startScene;
         primaryStage.setScene(p);
@@ -177,7 +173,13 @@ public class StartScreen extends Application {
         });
 
         pane.getChildren().add(menuBtn);
-        Image fl = new Image("/florida.png");
+        
+        CountryView florida = new CountryView(new Country("Florida", 4, 0), "/florida.png", this.game, 453d, 408d);
+        pane.getChildren().add(florida.i);
+        this.game.addCountry(florida.getCountry());
+        //florida.setLayoutX(408d);
+        //florida.setLayoutY(453d);
+        /*Image fl = new Image("/florida.png");
         ImageView florida = new ImageView(fl);
         florida.setPickOnBounds(false);
         florida.setOnMouseClicked((MouseEvent e) -> {
@@ -188,6 +190,7 @@ public class StartScreen extends Application {
             lighting.setSurfaceScale(0.0);
             lighting.setLight(new Light.Distant(45, 45, game.getCurrentPlayer().getColor()));
             System.out.println("clicked Florida!");
+            
             florida.setEffect(lighting);
         });
 
@@ -203,14 +206,12 @@ public class StartScreen extends Application {
             lighting.setLight(new Light.Distant(45, 45, Color.PURPLE));
             System.out.println("clicked Georgia!");
             georgia.setEffect(lighting);
-        });
+        });*/
 
-        pane.getChildren().add(georgia);
-        georgia.setLayoutX(460d);
-        georgia.setLayoutY(289d);
-        pane.getChildren().add(florida);
-        florida.setLayoutX(408d);
-        florida.setLayoutY(453d);
+        //pane.getChildren().add(georgia);
+        //georgia.setLayoutX(460d);
+        //georgia.setLayoutY(289d);
+        
 
         // CREATE AND ADD COUNTRIES
         return new Scene(pane, 900, 700);

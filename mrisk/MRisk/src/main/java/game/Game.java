@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javafx.scene.paint.Color;
+import utils.CountryCreator;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Game {
     int round;
     private List<Country> countries;
     private Country selectedCountry;
+    private String endButtonText;
     
     public static void main(String[] args) {
         
@@ -33,6 +35,7 @@ public class Game {
     
     public Game() {
         //this.players = new HashMap<>();
+        this.countries = new ArrayList<>();
         players = 2;
         p1 = new Player(Color.GREEN);
         p2 = new Player(Color.PURPLE);
@@ -66,10 +69,17 @@ public class Game {
         
     }
     
+    public void cyclePlayer() {
+        
+    }
+    
     public void initializeCountries() {
-        countries = new ArrayList<>();
-        countries.add(new Country("Florida", "/florida.png", 4, countries.size()));
-        countries.add(new Country("Georgia", "/georgia.png", 2, countries.size()));
+        //countries = CountryCreator.createCountries(this);
+        //countries = new ArrayList<>();
+    }
+    
+    public void addCountry(Country c) {
+        this.countries.add(c);
     }
     
     public List<Country> getCountries() {
@@ -82,8 +92,18 @@ public class Game {
     
     public void selectCountry(int index) {
         Country oldCountry = this.selectedCountry;
-        oldCountry.deselect();
-        getCountry(index).select();
+        if (oldCountry == null) {
+            System.out.println("nobody selected");
+        } else {
+            System.out.println(oldCountry.getName() + "!!!");
+            oldCountry.deselect();
+        }
+
+        this.selectedCountry = getCountry(index);
+        this.selectedCountry.select();
+        
+        
+        System.out.println(this.selectedCountry.getName());
         // UPDATE COLORS
     }
     

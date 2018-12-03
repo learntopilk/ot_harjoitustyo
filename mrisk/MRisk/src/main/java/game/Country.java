@@ -5,6 +5,7 @@
  */
 package game;
 
+import gui.CountryView;
 import javafx.scene.image.ImageView;
 
 /**
@@ -17,12 +18,13 @@ public class Country {
     private Player owner;
     private int value;
     private Integer troops;
-    public ImageView img;
+    //public ImageView img;
+    public CountryView view;
     private String imageUri;
     private int index;
     private boolean selected;
     
-    public Country(String name, String imageUri, int value, int index) {
+    public Country(String name, int value, int index) {
         this.name = name;
         this.value = value;
         this.index = index;
@@ -72,6 +74,13 @@ public class Country {
         // Other things
     }
     
+    public void setView(CountryView cw) {
+        this.view = cw;
+    }
+    
+    public boolean isSelected() {
+        return this.selected;
+    }
     
             
     
