@@ -39,6 +39,8 @@ About tests
 
 ## Command Line magic
 
+For running all of these, you need to be in the directory /mrisk/MRisk.
+
 #### Testing
 
 You can run tests with 
@@ -57,4 +59,11 @@ Check out my sweet checkstyle by checking in the following spell:
 
 ```
 mvn jxr:jxr checkstyle:checkstyle
+```
+
+#### Generate jar
+
+Use this to generate a functioning jar package:
+```
+mvn package
 ```
