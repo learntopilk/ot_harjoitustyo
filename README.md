@@ -31,6 +31,8 @@ Instructions (TODO)
 
 [Project architecture](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 
+[Mandatory sequence diagram](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/sequence.png)
+
 About tests
 
 [Time spent](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
