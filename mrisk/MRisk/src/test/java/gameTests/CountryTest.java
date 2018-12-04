@@ -6,6 +6,7 @@ package gameTests;
  * and open the template in the editor.
  */
 import game.Country;
+import game.Game;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,7 +22,7 @@ public class CountryTest {
     Country c;
     @Before
     public void setUp() {
-        c = new Country("florida", "florida.png", 2, 0);
+        c = new Country("florida", 2, 0, new Game());
     }
     
     @Test

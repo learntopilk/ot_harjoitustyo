@@ -37,9 +37,9 @@ public class Player {
     }
     
     public Player(Color color) {
-        this.name = "Player";
         this.troopsToSet = 10;
         this.color = color;
+        this.name = "Player " + this.color.toString();
     }
     
     public int getNum() {

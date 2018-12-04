@@ -2,6 +2,10 @@ package gui;
 
 import game.Country;
 import game.Game;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.ColorInput;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
@@ -14,21 +18,21 @@ import javafx.scene.paint.Color;
  * @author joonas
  */
 public class CountryView {
-    
+
     private Country country;
     public ImageView i;
     private Color color;
     Game game;
-    
+
     public CountryView(Country country) {
         this.country = country;
     }
-    
+
     public CountryView(Country country, String uri, Game g, double layoutY, double layoutX) {
-        this.color = color;
         this.country = country;
         this.game = g;
-        
+        this.color = Color.BISQUE;
+
         Image im = new Image(uri);
         ImageView countryView = new ImageView(im);
         this.i = countryView;
@@ -37,26 +41,21 @@ public class CountryView {
         countryView.setLayoutX(layoutX);
         countryView.setLayoutY(layoutY);
         countryView.setOnMouseClicked((MouseEvent e) -> {
-            System.out.println("clicked " + this.country.getName());
+            this.country.handleClickEvent();
+            //System.out.println("clicked " + this.country.getName());
             // Jos tämä valittu, nollaa
-            if (this.country.isSelected()) {
-                System.out.println("already selected");
+            /*if (this.country.isSelected()) {
+                this.country.deselect();
             } else {
-                Lighting lighting = new Lighting();
-                lighting.setDiffuseConstant(1.0);
-                lighting.setSpecularConstant(0.0);
-                lighting.setSpecularExponent(0.0);
-                lighting.setSurfaceScale(0.0);
-                lighting.setLight(new Light.Distant(45, 45, game.getCurrentPlayer().getColor()));
-                countryView.setEffect(lighting);
                 this.game.selectCountry(this.country.getIndex());
+                game.advanceRound();
                 //this.country.select();
-            }
-            
+                System.out.println("Selected: " + this.game.getSelectedCountry().getName());
+            }*/
         });
-        
+
     }
-    
+
     public Country getCountry() {
         return this.country;
     }
@@ -71,6 +70,19 @@ public class CountryView {
      */
     public void setColor(Color color) {
         this.color = color;
+        this.updateColorView();
+    }
+
+    public void updateColorView() {
+        Lighting lighting = new Lighting();
+        lighting.setDiffuseConstant(1.0);
+        lighting.setSpecularConstant(0.0);
+        lighting.setSpecularExponent(0.0);
+        lighting.setSurfaceScale(0.0);
+        //lighting.setLight(new Light.Distant(45, 45, game.getCurrentPlayer().getColor()));
+        lighting.setLight(new Light.Distant(45, 45, this.color));
+        this.i.setEffect(lighting);
+        System.out.println("updating color of " + this.country.getName() + " to " + this.color.toString());
     }
 
     /**
@@ -86,30 +98,33 @@ public class CountryView {
      * Darkens the shade of the country's current color.
      */
     public void darken() {
+        this.setColor(this.color.darker());
+        updateColorView();
+        System.out.println("darkenShade");
+    }
+
+    
+    /**
+     * Attempts to reset the shade of the country's current color.
+     */
+    public void resetShade() {
+
+        this.setColor(Color.GREEN);
+        updateColorView();
         
     }
-    
-    public void darkenShade(CountryView cw, Color color) {
-        
-        Lighting lighting = new Lighting();
-        lighting.setDiffuseConstant(1.0);
-        lighting.setSpecularConstant(0.0);
-        lighting.setSpecularExponent(0.0);
-        lighting.setSurfaceScale(0.0);
-        lighting.setLight(new Light.Distant(10, 10, this.color));
-        System.out.println("clicked Florida!");
-        
-        i.setEffect(lighting);
-    }
-    
+   
+
     public static void showColor() {
-        
+
     }
 
     /**
      * Lightens the shade of the country's current color.
      */
     public void lighten() {
-        
+        this.setColor(this.color.brighter());
+        updateColorView();
+
     }
 }

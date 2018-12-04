@@ -4,11 +4,23 @@ MRisk is a minimal implementation of the classic board game Risk. As a minimal r
 
 I hope to be able to add more/larger maps once the map mechanics are better defined.
 
-## Update on development
+## Recent development
 
-The application is progressing slowly. At the moment, I'm working on country mechanics, colors, and basic selecting. Once that is done, I'll complete all player functionality for a full test. 
+At the moment, the game has two players, four states, and players may pick states. The actual game mechanics still need to be built.
 
-After these are done, I will create the whole map. No point
+The next steps::
+
+1. Enabling troop deployment
+2. Display for showing the number of troops each state has
+3. Attack mechanics
+4. Victory conditions
+5. All of the states in the map included
+6. Possibility for additional players.
+
+
+## Release
+
+Check out my latest [here](https://github.com/learntopilk/ot_harjoitustyo/releases/tag/viikko5). It's still terrible, but hey, at least you can pick countries.
 
 
 ## Documentation

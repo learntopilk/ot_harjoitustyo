@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import game.Country;
@@ -16,10 +11,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Light;
-import javafx.scene.effect.Lighting;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -28,7 +20,6 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -45,13 +36,12 @@ public class StartScreen extends Application {
     private Scene gameScene;
     private Game game;
     BackgroundImage bg;
+    private String playerInTurn;
+    private String turnPhase;
+    private TextField phaseDisplay = new TextField();
 
     public StartScreen() {
         game = new Game();
-    }
-
-    public void begin() {
-        //
     }
 
     public static void main(String[] args) {
@@ -73,11 +63,13 @@ public class StartScreen extends Application {
                 btn.setText("Hello World said");
             }
         });
+        
         Button startGame = new Button();
         startGame.setText("Start Game");
         startGame.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Entering main screen");
                 goToGameScreen();
             }
         });
@@ -119,12 +111,20 @@ public class StartScreen extends Application {
         p = startScene;
         primaryStage.setScene(p);
         primaryStage.show();
+        
+        game.start();
+        update();
     }
 
     private void goToStartScreen() {
         stage.setScene(start);
     }
-
+    
+    public void update() {
+        this.playerInTurn = game.getCurrentPlayer().getName();
+        this.updateTurnDisplay();
+    }
+    
     private void goToStats() {
         GridPane statGrid = new GridPane();
 
@@ -154,7 +154,12 @@ public class StartScreen extends Application {
         if (gameScene == null) {
             gameScene = createGameScene();
         }
-        stage.setScene(createGameScene());
+        stage.setScene(gameScene);
+    }
+
+    public void updateTurnDisplay() {
+        phaseDisplay.setText(playerInTurn);
+        //phaseDisplay.setText(turnPhase);
     }
 
     private Scene createGameScene() {
@@ -164,56 +169,43 @@ public class StartScreen extends Application {
         Button menuBtn = new Button();
         menuBtn.setText("Return to Main Screen");
         menuBtn.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Returnint to menu screen from main screen");
+                System.out.println("Returning to menu screen from main screen");
                 goToStartScreen();
             }
         });
 
         pane.getChildren().add(menuBtn);
         
-        CountryView florida = new CountryView(new Country("Florida", 4, 0), "/florida.png", this.game, 453d, 408d);
+        updateTurnDisplay();
+        phaseDisplay.setLayoutX(screenWidth);
+        phaseDisplay.setLayoutY(0);
+        pane.getChildren().add(phaseDisplay);
+
+        CountryView florida = new CountryView(new Country("Florida", 4, 0, this.game), "/florida.png", this.game, 453d, 408d);
+        florida.setColor(florida.getCountry().getDefaultColor());
         pane.getChildren().add(florida.i);
         this.game.addCountry(florida.getCountry());
-        //florida.setLayoutX(408d);
-        //florida.setLayoutY(453d);
-        /*Image fl = new Image("/florida.png");
-        ImageView florida = new ImageView(fl);
-        florida.setPickOnBounds(false);
-        florida.setOnMouseClicked((MouseEvent e) -> {
-            Lighting lighting = new Lighting();
-            lighting.setDiffuseConstant(1.0);
-            lighting.setSpecularConstant(0.0);
-            lighting.setSpecularExponent(0.0);
-            lighting.setSurfaceScale(0.0);
-            lighting.setLight(new Light.Distant(45, 45, game.getCurrentPlayer().getColor()));
-            System.out.println("clicked Florida!");
-            
-            florida.setEffect(lighting);
-        });
 
-        Image ge = new Image("/georgia.png");
-        ImageView georgia = new ImageView(ge);
-        georgia.setPickOnBounds(false);
-        georgia.setOnMouseClicked((MouseEvent e) -> {
-            Lighting lighting = new Lighting();
-            lighting.setDiffuseConstant(1.0);
-            lighting.setSpecularConstant(0.0);
-            lighting.setSpecularExponent(0.0);
-            lighting.setSurfaceScale(0.0);
-            lighting.setLight(new Light.Distant(45, 45, Color.PURPLE));
-            System.out.println("clicked Georgia!");
-            georgia.setEffect(lighting);
-        });*/
-
-        //pane.getChildren().add(georgia);
-        //georgia.setLayoutX(460d);
-        //georgia.setLayoutY(289d);
+        CountryView georgia = new CountryView(new Country("Georgia", 3, 1, this.game), "/georgia.png", this.game, 289d, 460d);
+        georgia.setColor(georgia.getCountry().getDefaultColor());
+        pane.getChildren().add(georgia.i);
+        this.game.addCountry(georgia.getCountry());
         
-
-        // CREATE AND ADD COUNTRIES
+        CountryView alabama = new CountryView(new Country("Alabama", 2, 2, this.game), "/alabama.png", this.game, 300d, 367d);
+        alabama.setColor(alabama.getCountry().getDefaultColor());
+        pane.getChildren().add(alabama.i);
+        this.game.addCountry(alabama.getCountry());
+        
+        CountryView southCarolina = new CountryView(new Country("South Carolina", 3, 3, this.game), "/southcarolina.png", this.game, 267d, 539d);
+        southCarolina.setColor(southCarolina.getCountry().getDefaultColor());
+        pane.getChildren().add(southCarolina.i);
+        this.game.addCountry(southCarolina.getCountry());
+        
+        
+        // MORE COUNTRIES
+        
         return new Scene(pane, 900, 700);
     }
 }
