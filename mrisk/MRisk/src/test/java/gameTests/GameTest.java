@@ -30,10 +30,49 @@ public class GameTest {
         assertNotNull(l);
     }
     
-    //@Test
+    @Test
     public void canGetCurrentPlayer() {
         Player p = g.getCurrentPlayer();
-        assertEquals(p.getName(), "Player");
+        assertEquals("Player 0x008000ff", p.getName());
+    }
+    
+    @Test
+    public void noCountrySelectedInitially() {
+        Country c = g.getSelectedCountry();
+        assertEquals(null, c);
+    }
+    
+    @Test
+    public void initialPhaseIsCountrySelection() {
+        assertEquals(g.getPhase(), "COUNTRYSELECTION");
+    }
+    
+    @Test
+    public void attackPhaseStartsNicely() {
+        g.startAttackPhase();
+        assertEquals("ATTACK", g.getPhase());
+    }
+    
+    @Test
+    public void startingCountrySelectionSetsReasonableDefaultValues() {
+        g.startCountrySelection();
+        assertEquals("COUNTRYSELECTION", g.getPhase());
+        assertTrue(0 < g.getNumberOfCountriesRemainingToSelect());
+    }
+    
+    
+    @Test
+    public void gameStartsAndNumberOfCountriesToSelectDecreases() {
+        g.start();
+        //int countries = g.getNumberOfCountriesRemainingToSelect();
+        assertTrue(g.removeCountryToSet());
+    }
+    
+    @Test
+    public void advancingRoundChangesCurrentPlayer() {
+        Player p = g.getCurrentPlayer();
+        g.advanceRound();
+        assertFalse(p.getName().equals(g.getCurrentPlayer().getName()));
     }
     
 }

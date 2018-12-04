@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package game;
 
 import gui.CountryView;
@@ -20,7 +15,6 @@ public class Country {
     private int value;
     private Integer troops;
     public CountryView view;
-    private String imageUri;
     private int index;
     private boolean selected;
     private Color defaultColor = Color.BEIGE;
@@ -55,10 +49,6 @@ public class Country {
         this.troops = number;
     }
 
-    public String getImageUri() {
-        return this.imageUri;
-    }
-
     public int getTroops() {
         return this.troops;
     }
@@ -73,14 +63,12 @@ public class Country {
 
     public void select() {
         this.selected = true;
-        this.view.darken();
     }
 
     public void handleClickEvent() {
         switch (game.getPhase()) {
             case "COUNTRYSELECTION":
                 System.out.println("Selecting ");
-
                 if (this.hasOwner()) {
                     System.out.println(this.getName() + " cannot be selected, owner: " + this.owner.getName());
                 } else {
@@ -92,13 +80,10 @@ public class Country {
                     } else {
                         game.cyclePlayer();
                     }
-                    
                 }
-
                 break;
             case "DEPLOyMENT":
                 System.out.println("Deploying troops");
-                
                 break;
             case "ATTACK":
                 System.out.println("ATTACK");

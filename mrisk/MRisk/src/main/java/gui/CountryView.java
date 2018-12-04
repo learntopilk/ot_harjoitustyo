@@ -108,15 +108,8 @@ public class CountryView {
      * Attempts to reset the shade of the country's current color.
      */
     public void resetShade() {
-
         this.setColor(Color.GREEN);
         updateColorView();
-        
-    }
-   
-
-    public static void showColor() {
-
     }
 
     /**
@@ -125,6 +118,5 @@ public class CountryView {
     public void lighten() {
         this.setColor(this.color.brighter());
         updateColorView();
-
     }
 }

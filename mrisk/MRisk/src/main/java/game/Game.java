@@ -38,11 +38,11 @@ public class Game {
         round = 1;
 
     }
-
+/*
     public void attack(int attacker, int defender) {
         // TODO
     }
-
+*/
     public void start() {
         this.startCountrySelection();
     }
@@ -78,13 +78,9 @@ public class Game {
      * values of the countries each player owns.
      */
     public void calculateTroopsToDeploy() {
-        System.out.println("countries.size() " + countries.size());
         for (Country c : this.countries) {
-            System.out.println(c.getName());
             Player p = c.getOwner();
-            System.out.println(p.getName());
             p.addTroopsToSet(c.getTroopValue());
-            //c.getOwner().addTroopsToSet(c.getTroopValue());
         }
 
         System.out.println("Player 1 has " + p1.getTroopsToSet() + " troops to deploy");
@@ -131,9 +127,11 @@ public class Game {
      * @param index
      * @return Country at the specified index
      */
+    /*
     public Country getCountry(int index) {
         return this.countries.get(index);
     }
+    */
 
     /**
      * Subtracts one from the number of countries that do not have an owner.
@@ -146,6 +144,10 @@ public class Game {
         }
         return false;
     }
+    
+    public int getNumberOfCountriesRemainingToSelect() {
+        return this.countriesLeftToSelect;
+    }
 
     /**
      * 
@@ -157,7 +159,7 @@ public class Game {
 
     /**
      * Sets a country as selected by the player currently in turn.
-     * @param index Index ofthe country to select
+     * @param index Index of the country to select
      */
     public void selectCountry(int index) {
         Country oldCountry = this.selectedCountry;
@@ -166,7 +168,6 @@ public class Game {
         } else {
             oldCountry.deselect();
         }
-
         this.selectedCountry = getCountry(index);
         this.selectedCountry.select();
     }
