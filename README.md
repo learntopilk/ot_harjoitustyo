@@ -20,7 +20,7 @@ The next steps::
 
 ## Release
 
-Check out my latest [here](https://github.com/learntopilk/ot_harjoitustyo/releases/tag/viikko5). It's still terrible, but hey, at least you can pick countries.
+Check out my latest release [here](https://github.com/learntopilk/ot_harjoitustyo/releases/tag/viikko5). It's still terrible, but hey, at least you can pick countries.
 
 
 ## Documentation

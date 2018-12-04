@@ -1,0 +1,30 @@
+title Assigning a country to a player
+
+User->CountryView: User clicks country
+CountryView->CountryView: onMouseClicked()
+CountryView->Country: country.handleClickEvent()
+note left of Country: If country has owner, return
+Country -> Player: Player.getColor();
+Player->Country: return player's color
+Country->CountryView: CountryView.setColor(playerColor)
+CountryView->CountryView: this.updateColorView();
+Country->Game: Game.getCurrentPlayer()
+Game->Country: return currentPlayer
+Country->Country: this.setOwner(CurrentPlayer)
+Country->Game: Game.removeCountryToSet()
+Note right of Game: Reduces number of countries left by one
+Game->Country: return countriesLeft
+
+
+
+alt if no countries remain
+    Country->Game: Game.cyclePlayer()
+else if countries remain
+    Country->Game: Game.startTroopDeployment()
+    Game->Game: calculateTroopsToDeploy()
+    Game->Country: Country.getOwner()
+    Country->Game: return owner
+    Game->Country : Country.getTroopValue()
+    Country->Game: return value
+    Game->Player: Player.setTroopValue(value)
+end
