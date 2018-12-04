@@ -163,11 +163,10 @@ public class Game {
      */
     public void selectCountry(int index) {
         Country oldCountry = this.selectedCountry;
-        if (oldCountry == null) {
-
-        } else {
+        if (oldCountry != null) {
             oldCountry.deselect();
         }
+
         this.selectedCountry = getCountry(index);
         this.selectedCountry.select();
     }

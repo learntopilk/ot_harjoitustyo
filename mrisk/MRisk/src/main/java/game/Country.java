@@ -82,13 +82,14 @@ public class Country {
                     }
                 }
                 break;
-            case "DEPLOyMENT":
+            case "DEPLOYMENT":
                 System.out.println("Deploying troops");
                 break;
             case "ATTACK":
                 System.out.println("ATTACK");
                 break;
             default:
+                System.out.println("Phase: " + game.getPhase());
                 System.out.println("You're in deep shit, yo");
         }
     }
