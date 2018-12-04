@@ -127,11 +127,11 @@ public class Game {
      * @param index
      * @return Country at the specified index
      */
-    /*
+    
     public Country getCountry(int index) {
         return this.countries.get(index);
     }
-    */
+    
 
     /**
      * Subtracts one from the number of countries that do not have an owner.

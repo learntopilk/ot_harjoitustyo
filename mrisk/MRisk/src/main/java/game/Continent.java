@@ -10,5 +10,8 @@ package game;
  * @author joonas
  */
 public class Continent {
-    
+    // empty...
+    public Continent() {
+        
+    }
 }
