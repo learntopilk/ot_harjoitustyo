@@ -83,7 +83,7 @@ public class Country {
                 }
                 break;
             case "DEPLOYMENT":
-                System.out.println("Deploying troops");
+                System.out.println("Sorry pal, that's as far as you go.");
                 break;
             case "ATTACK":
                 System.out.println("ATTACK");
