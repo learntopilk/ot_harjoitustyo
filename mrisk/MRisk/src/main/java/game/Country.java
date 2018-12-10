@@ -92,7 +92,7 @@ public class Country {
         } else {
             this.view.setColor(game.currentPlayer.getColor());
             this.setOwner(game.currentPlayer);
-            this.troops = 1; // Setting a troop in there
+            this.troops = 1; 
             this.owner.addTotalTroops(1);
             this.view.updateTroopDisplay();
             boolean countriesLeft = this.game.removeCountryToSet();
@@ -110,7 +110,9 @@ public class Country {
             this.owner.removeOneTroop();
             this.troops++;
             this.view.updateTroopDisplay();
-            this.game.cyclePlayer();
+            this.game.reduceTotalNumberOfTroopsLeftToDeploy();
+            //this.game.cyclePlayer();
+            this.game.nextDeploymentTurn();
             // Update view and cycle player + check if other player has troops to commit
         } else {
             System.out.println("Not your country, man!");

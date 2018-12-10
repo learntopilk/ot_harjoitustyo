@@ -54,9 +54,20 @@ public class Game {
         currentPlayer = p1;
         // PLACING TROOPS
     }
+    
+    public void nextDeploymentTurn() {
+        if (this.troopsLeftToDeploy > 0) {
+            do {
+                cyclePlayer();
+            } while (this.currentPlayer.getTroopsToSet() == 0);
+        } else {
+            startAttackPhase();
+        }
+    }
 
     public void startAttackPhase() {
         phase = "ATTACK";
+        System.out.println("Moving on to attack phase");
     }
     
     public boolean troopsLeftToSet() {
@@ -75,7 +86,7 @@ public class Game {
 
     }
 
-    public void endTurn() {
+    public void endRound() {
         round++;
         if (round > 2) {
             round = 1;
@@ -114,7 +125,7 @@ public class Game {
         } else {
             this.currentPlayer = p1;
         }
-
+        
     }
 
     /**
