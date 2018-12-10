@@ -35,7 +35,7 @@ public class CountryView {
     public CountryView(Country country, String uri, Game g, double layoutY, double layoutX) {
         this.country = country;
         this.game = g;
-        this.color = Color.BISQUE;
+        //this.color = Color.BEIGE;
         
         troopNumberDisplay = new TextField();
         troopNumberDisplay.setLayoutX(layoutX + 50);
@@ -56,6 +56,7 @@ public class CountryView {
         ImageView countryView = new ImageView(im);
         this.i = countryView;
         
+        this.setColor(this.country.getDefaultColor());
         this.country.setView(this);
         countryView.setPickOnBounds(false);
         countryView.setLayoutX(layoutX);
@@ -71,7 +72,6 @@ public class CountryView {
     }
 
     public void updateTroopDisplay() {
-        System.out.println(this.country.getName() + " has " + this.country.getTroops() + " troops.");
         troopNumberDisplay.setText(Integer.toString(this.country.getTroops()));
     }
     

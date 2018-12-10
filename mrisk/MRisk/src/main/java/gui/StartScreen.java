@@ -185,28 +185,20 @@ public class StartScreen extends Application {
         pane.getChildren().add(phaseDisplay);
 
         CountryView florida = new CountryView(new Country("Florida", 4, 0, this.game), "/florida.png", this.game, 453d, 408d);
-        florida.setColor(florida.getCountry().getDefaultColor());
         pane.getChildren().add(florida.i);
         pane.getChildren().add(florida.getTextDisplay());
-        this.game.addCountry(florida.getCountry());
 
         CountryView georgia = new CountryView(new Country("Georgia", 3, 1, this.game), "/georgia.png", this.game, 289d, 460d);
-        georgia.setColor(georgia.getCountry().getDefaultColor());
         pane.getChildren().add(georgia.i);
         pane.getChildren().add(georgia.getTextDisplay());
-        this.game.addCountry(georgia.getCountry());
         
         CountryView alabama = new CountryView(new Country("Alabama", 2, 2, this.game), "/alabama.png", this.game, 300d, 367d);
-        alabama.setColor(alabama.getCountry().getDefaultColor());
         pane.getChildren().add(alabama.i);
         pane.getChildren().add(alabama.getTextDisplay());
-        this.game.addCountry(alabama.getCountry());
         
         CountryView southCarolina = new CountryView(new Country("South Carolina", 3, 3, this.game), "/southcarolina.png", this.game, 267d, 539d);
-        southCarolina.setColor(southCarolina.getCountry().getDefaultColor());
         pane.getChildren().add(southCarolina.i);
         pane.getChildren().add(southCarolina.getTextDisplay());
-        this.game.addCountry(southCarolina.getCountry());
         
         
         // MORE COUNTRIES

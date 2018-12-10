@@ -22,11 +22,15 @@ public class Country {
 
     public Country(String name, int value, int index, Game game) {
         this.name = name;
+        this.defaultColor = Color.BEIGE;
         this.value = value;
         this.index = index;
         this.selected = false;
         this.game = game;
         this.troops = 0;
+        
+        //test
+        this.game.addCountry(this);
     }
 
     public String getName() {
