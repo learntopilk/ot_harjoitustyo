@@ -111,7 +111,6 @@ public class Game {
     public void cyclePlayer() {
         if (this.currentPlayer == p1) {
             this.currentPlayer = p2;
-            
         } else {
             this.currentPlayer = p1;
         }

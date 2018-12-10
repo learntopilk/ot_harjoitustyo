@@ -2,13 +2,19 @@ package gui;
 
 import game.Country;
 import game.Game;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  *
@@ -20,7 +26,7 @@ public class CountryView {
     public ImageView i;
     private Color color;
     Game game;
-    TextField t;
+    private TextField troopNumberDisplay;
 
     public CountryView(Country country) {
         this.country = country;
@@ -30,7 +36,20 @@ public class CountryView {
         this.country = country;
         this.game = g;
         this.color = Color.BISQUE;
-        t = new TextField();
+        
+        troopNumberDisplay = new TextField();
+        troopNumberDisplay.setLayoutX(layoutX + 50);
+        troopNumberDisplay.setLayoutY(layoutY + 50);
+        troopNumberDisplay.setEditable(false);
+        troopNumberDisplay.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        troopNumberDisplay.setAlignment(Pos.CENTER);
+        troopNumberDisplay.setStyle(
+                "-fx-control-inner-background: black;"
+                +"-fx-border-radius: 20 20 20 20;" 
+                +"-fx-background-radius: 20 20 20 20;" 
+                +"-fx-text-fill: white;");
+        troopNumberDisplay.setPrefWidth(80d);
+        troopNumberDisplay.setPrefHeight(40d);
         this.updateTroopDisplay();
 
         Image im = new Image(uri);
@@ -53,7 +72,11 @@ public class CountryView {
 
     public void updateTroopDisplay() {
         System.out.println(this.country.getName() + " has " + this.country.getTroops() + " troops.");
-        t.setText(Integer.toString(this.country.getTroops()));
+        troopNumberDisplay.setText(Integer.toString(this.country.getTroops()));
+    }
+    
+    public TextField getTextDisplay() {
+        return this.troopNumberDisplay;
     }
 
     /**
