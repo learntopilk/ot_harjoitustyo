@@ -122,6 +122,7 @@ public class StartScreen extends Application {
     
     public void update() {
         this.playerInTurn = game.getCurrentPlayer().getName();
+        System.out.println(game.getCurrentPlayer().getName());
         this.updateTurnDisplay();
     }
     

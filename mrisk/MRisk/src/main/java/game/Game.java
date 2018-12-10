@@ -1,9 +1,7 @@
 
 package game;
 
-import gui.StartScreen;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javafx.scene.paint.Color;
 
@@ -23,6 +21,7 @@ public class Game {
     private String endButtonText;
     private String phase;
     private int countriesLeftToSelect;
+    private int troopsLeftToDeploy;
 
     public static void main(String[] args) {
 
@@ -36,6 +35,7 @@ public class Game {
         currentPlayer = p1;
         phase = "COUNTRYSELECTION";
         round = 1;
+        troopsLeftToDeploy = 0;
 
     }
 /*
@@ -57,6 +57,15 @@ public class Game {
 
     public void startAttackPhase() {
         phase = "ATTACK";
+    }
+    
+    public boolean troopsLeftToSet() {
+        if (this.troopsLeftToDeploy > 0) return true;
+        return false;
+    }
+    
+    public void reduceTotalNumberOfTroopsLeftToDeploy() {
+        if (this.troopsLeftToDeploy > 0) this.troopsLeftToDeploy--;
     }
 
     public void startCountrySelection() {
@@ -81,10 +90,12 @@ public class Game {
         for (Country c : this.countries) {
             Player p = c.getOwner();
             p.addTroopsToSet(c.getTroopValue());
+            this.troopsLeftToDeploy += c.getTroopValue();
         }
 
         System.out.println("Player 1 has " + p1.getTroopsToSet() + " troops to deploy");
         System.out.println("Player 2 has " + p2.getTroopsToSet() + " troops to deploy");
+        System.out.println("There area a total of " + this.troopsLeftToDeploy + " = " + (p1.getTroopsToSet() + p2.getTroopsToSet()) + " troops to deploy");
     }
 
     /**
@@ -100,6 +111,7 @@ public class Game {
     public void cyclePlayer() {
         if (this.currentPlayer == p1) {
             this.currentPlayer = p2;
+            
         } else {
             this.currentPlayer = p1;
         }

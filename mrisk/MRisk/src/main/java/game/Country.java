@@ -26,7 +26,7 @@ public class Country {
         this.index = index;
         this.selected = false;
         this.game = game;
-        this.troops = 1;
+        this.troops = 0;
     }
 
     public String getName() {
@@ -68,30 +68,53 @@ public class Country {
     public void handleClickEvent() {
         switch (game.getPhase()) {
             case "COUNTRYSELECTION":
-                System.out.println("Selecting ");
-                if (this.hasOwner()) {
-                    System.out.println(this.getName() + " cannot be selected, owner: " + this.owner.getName());
-                } else {
-                    this.view.setColor(game.currentPlayer.getColor());
-                    this.setOwner(game.currentPlayer);
-                    boolean countriesLeft = this.game.removeCountryToSet();
-                    if (!countriesLeft) {
-                        game.startTroopDeployment();
-                    } else {
-                        game.cyclePlayer();
-                    }
-                }
+                this.handleSelectionPhaseClick();
                 break;
             case "DEPLOYMENT":
-                System.out.println("Sorry pal, that's as far as you go.");
+                this.handleDeploymentPhaseClick();
                 break;
             case "ATTACK":
-                System.out.println("ATTACK");
+                this.handleAttackPhaseClick("placeholder");
                 break;
             default:
                 System.out.println("Phase: " + game.getPhase());
                 System.out.println("You're in deep shit, yo");
         }
+    }
+
+    public void handleSelectionPhaseClick() {
+        if (this.hasOwner()) {
+            System.out.println(this.getName() + " cannot be selected, owner: " + this.owner.getName());
+        } else {
+            this.view.setColor(game.currentPlayer.getColor());
+            this.setOwner(game.currentPlayer);
+            this.troops = 1; // Setting a troop in there
+            this.owner.addTotalTroops(1);
+            this.view.updateTroopDisplay();
+            boolean countriesLeft = this.game.removeCountryToSet();
+            if (!countriesLeft) {
+                System.out.println("No more countries!");
+                game.startTroopDeployment();
+            } else {
+                game.cyclePlayer();
+            }
+        }
+    }
+
+    public void handleDeploymentPhaseClick() {
+        if (this.owner.equals(game.getCurrentPlayer())) {
+            this.owner.removeOneTroop();
+            this.troops++;
+            this.view.updateTroopDisplay();
+            this.game.cyclePlayer();
+            // Update view and cycle player + check if other player has troops to commit
+        } else {
+            System.out.println("Not your country, man!");
+        }
+    }
+
+    public void handleAttackPhaseClick(String type) {
+        System.out.println("attack phase click");
     }
 
     public void deselect() {

@@ -2,10 +2,7 @@ package gui;
 
 import game.Country;
 import game.Game;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.ColorInput;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
@@ -23,6 +20,7 @@ public class CountryView {
     public ImageView i;
     private Color color;
     Game game;
+    TextField t;
 
     public CountryView(Country country) {
         this.country = country;
@@ -32,32 +30,30 @@ public class CountryView {
         this.country = country;
         this.game = g;
         this.color = Color.BISQUE;
+        t = new TextField();
+        this.updateTroopDisplay();
 
         Image im = new Image(uri);
         ImageView countryView = new ImageView(im);
         this.i = countryView;
+        
         this.country.setView(this);
         countryView.setPickOnBounds(false);
         countryView.setLayoutX(layoutX);
         countryView.setLayoutY(layoutY);
         countryView.setOnMouseClicked((MouseEvent e) -> {
             this.country.handleClickEvent();
-            //System.out.println("clicked " + this.country.getName());
-            // Jos tämä valittu, nollaa
-            /*if (this.country.isSelected()) {
-                this.country.deselect();
-            } else {
-                this.game.selectCountry(this.country.getIndex());
-                game.advanceRound();
-                //this.country.select();
-                System.out.println("Selected: " + this.game.getSelectedCountry().getName());
-            }*/
         });
 
     }
 
     public Country getCountry() {
         return this.country;
+    }
+
+    public void updateTroopDisplay() {
+        System.out.println(this.country.getName() + " has " + this.country.getTroops() + " troops.");
+        t.setText(Integer.toString(this.country.getTroops()));
     }
 
     /**
@@ -103,7 +99,6 @@ public class CountryView {
         System.out.println("darkenShade");
     }
 
-    
     /**
      * Attempts to reset the shade of the country's current color.
      */
