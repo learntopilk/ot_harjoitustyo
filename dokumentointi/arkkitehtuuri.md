@@ -34,7 +34,7 @@ The class Player contains player-specific data.
 
 Country.java takes care of countries, and manages the various country views by implementing event handler methods.
 
-##Sequence diagram
+## Sequence diagram
 
 Thus we assign a country to a player:
 ![Sequence diagram](sequence.png)
