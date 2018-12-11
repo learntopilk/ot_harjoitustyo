@@ -15,7 +15,6 @@ public class Country {
     private int value;
     private Integer troops;
     private CountryView view;
-    private int index;
     private boolean selected;
     private Color defaultColor = Color.BEIGE;
     private Game game;
@@ -24,14 +23,10 @@ public class Country {
         this.name = name;
         this.defaultColor = Color.BEIGE;
         this.value = value;
-        this.index = index;
         this.selected = false;
         this.game = game;
         this.troops = 0;
-        
-        //test
         this.game.addCountry(this);
-        System.out.println("added " + this.name);
     }
 
     public String getName() {
@@ -62,10 +57,6 @@ public class Country {
         return this.value;
     }
 
-    public int getIndex() {
-        return this.index;
-    }
-
     public void select() {
         this.selected = true;
     }
@@ -89,7 +80,6 @@ public class Country {
 
     public void handleSelectionPhaseClick() {
         if (this.hasOwner()) {
-            System.out.println(this.getName() + " cannot be selected, owner: " + this.owner.getName());
         } else {
             this.view.setColor(game.currentPlayer.getColor());
             this.setOwner(game.currentPlayer);
@@ -98,7 +88,6 @@ public class Country {
             this.view.updateTroopDisplay();
             boolean countriesLeft = this.game.removeCountryToSet();
             if (!countriesLeft) {
-                System.out.println("No more countries!");
                 game.startTroopDeployment();
             } else {
                 game.cyclePlayer();
@@ -112,25 +101,21 @@ public class Country {
             this.troops++;
             this.view.updateTroopDisplay();
             this.game.reduceTotalNumberOfTroopsLeftToDeploy();
-            //this.game.cyclePlayer();
             this.game.nextDeploymentTurn();
             // Update view and cycle player + check if other player has troops to commit
         } else {
-            System.out.println("Not your country, man!");
         }
     }
 
     public void handleAttackPhaseClick(String type) {
-        System.out.println("attack phase click");
+
     }
 
     public void deselect() {
         this.selected = false;
         if (this.owner != null) {
-            System.out.println("mös");
             this.view.setColor(this.owner.getColor());
         } else {
-            System.out.println("PÖS");
             this.view.setColor(Color.BLUE);
         }
     }

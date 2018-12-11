@@ -49,7 +49,7 @@ public class GameTest {
     
     @Test
     public void attackPhaseStartsNicely() {
-        g.start();
+        g.nextDeploymentTurn();
         assertEquals("ATTACK", g.getPhase());
     }
     
@@ -57,15 +57,25 @@ public class GameTest {
     public void startingCountrySelectionSetsReasonableDefaultValues() {
         g.startCountrySelection();
         assertEquals("COUNTRYSELECTION", g.getPhase());
-        assertTrue(0 < g.getNumberOfCountriesRemainingToSelect());
+        assertTrue(g.getCountries().size() == g.getNumberOfCountriesRemainingToSelect());
+    }
+    
+    @Test
+    public void canRemoveCountriesFromlist() {
+        Country floor = new Country("Floor", 3, 0, g);
+        Country blaar = new Country("blaar", 4, 1, g);
+        g.startCountrySelection();
+        System.out.println("countries: " + g.getNumberOfCountriesRemainingToSelect());
+        assertTrue(g.removeCountryToSet());
+        assertFalse(g.removeCountryToSet());
     }
     
     
     @Test
-    public void gameStartsAndNumberOfCountriesToSelectDecreases() {
+    public void gameStartsAndNoCountriesInitially() {
         g.start();
-        //int countries = g.getNumberOfCountriesRemainingToSelect();
-        assertTrue(g.removeCountryToSet());
+        assertEquals("COUNTRYSELECTION", g.getPhase());
+        assertEquals(0, g.getCountries().size());
     }
     
     @Test
@@ -75,4 +85,30 @@ public class GameTest {
         assertFalse(p.getName().equals(g.getCurrentPlayer().getName()));
     }
     
+    @Test
+    public void canAddCountries() {
+        Country floor = new Country("Floor", 3, 0, g);
+        Country blaar = new Country("blaar", 4, 1, g);
+        assertEquals(2, g.getCountries().size());
+    }
+    
+    @Test
+    public void addedCountriesAddUpToNumberOfTroopsToDeploy() {
+        Country floor = new Country("Floor", 3, 0, g);
+        Country blaar = new Country("blaar", 4, 1, g);
+        floor.setOwner(new Player(Color.GREEN));
+        blaar.setOwner(new Player(Color.RED));
+        g.startTroopDeployment();
+        assertEquals(7, g.getNumberOfTroopsLeftToDeploy());
+    }
+    
+    public void canReduceTroopsToDeploy() {
+        Country floor = new Country("Floor", 3, 0, g);
+        Country blaar = new Country("blaar", 4, 1, g);
+        floor.setOwner(new Player(Color.GREEN));
+        blaar.setOwner(new Player(Color.RED));
+        g.startTroopDeployment();
+        g.reduceTotalNumberOfTroopsLeftToDeploy();
+        assertEquals(6, g.getNumberOfTroopsLeftToDeploy());
+    }
 }

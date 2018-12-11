@@ -22,9 +22,11 @@ import javafx.scene.paint.Color;
  */
 public class CountryTest {
     Country c;
+    Game g;
     @Before
     public void setUp() {
-        c = new Country("florida", 2, 0, new Game());
+        g = new Game();
+        c = new Country("florida", 2, 0, g);
         c.setView(new CountryView(c));
     }
     
@@ -47,15 +49,15 @@ public class CountryTest {
     
     @Test
     public void ownerSetProperly() {
-        Player p = new Player();
+        Player p = new Player(Color.AQUA);
         c.setOwner(p);
         Player g = c.getOwner();
         assertEquals(p, g);
     }
     
     @Test
-    public void initiallyOnlyOneTroop() {
-        assertEquals(c.getTroops(), 1);
+    public void initiallyNoTroops() {
+        assertEquals(c.getTroops(), 0);
     }
     
     @Test
@@ -74,7 +76,6 @@ public class CountryTest {
         Country co = new Country("florida", 3, 2, new Game());
         assertEquals(co.getName(), "florida");
         assertEquals(co.getTroopValue(), 3);
-        assertEquals(co.getIndex(), 2);
     }
     
     @Test

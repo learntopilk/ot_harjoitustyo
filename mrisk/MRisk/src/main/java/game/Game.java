@@ -77,7 +77,6 @@ public class Game {
 
     private void startAttackPhase() {
         phase = "ATTACK";
-        System.out.println("Moving on to attack phase");
     }
     
     /**
@@ -101,24 +100,19 @@ public class Game {
         }
         return false;
     }
+    
+    public int getNumberOfTroopsLeftToDeploy() {
+        return this.troopsLeftToDeploy;
+    }
 
     /**
      * Begins the country selection phase. Can only be called once per game.
      */
     public void startCountrySelection() {
         phase = "COUNTRYSELECTION";
-        //this.countriesLeftToSelect = 5;
         countriesLeftToSelect = this.countries.size();
-        System.out.println("countries: " + this.countries.size());
         currentPlayer = p1;
 
-    }
-
-    public void endRound() {
-        round++;
-        if (round > 2) {
-            round = 1;
-        }
     }
 
     /**

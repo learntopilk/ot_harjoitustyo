@@ -51,11 +51,13 @@ public class Player {
     }
     
     /**
-     * Adds the specified number of troops to the player's troop count.
+     * Adds the specified number of troops to the player's troop count. Also adds
+     * the troops to the count of troops the player must deploy.
      * @param num Number of troops to add to total count
      */
     public void addTotalTroops(int num) {
         this.totalTroops += num;
+        this.troopsToSet += num;
         System.out.println("Player " + this.name + " has " + this.totalTroops + " troops.");
     }
     
@@ -71,7 +73,7 @@ public class Player {
      * Returns the number of troops the player still has to set.
      * @return Number of troops left to deploy
      */
-    public Integer getTroopsToSet() {
+    public int getTroopsToSet() {
         return this.troopsToSet;
     }
     
