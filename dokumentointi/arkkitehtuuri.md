@@ -20,6 +20,8 @@ The UI calls the method that starts the game.
 
 ## Application Logic
 
+![main classes](b168feca.png)
+
 The class Game contains most of the controlling logic of the game. A central mechanic is that of game phases, of which there are three:
 
 - Country selection
