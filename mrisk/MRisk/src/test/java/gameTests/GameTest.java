@@ -49,7 +49,7 @@ public class GameTest {
     
     @Test
     public void attackPhaseStartsNicely() {
-        g.startAttackPhase();
+        g.start();
         assertEquals("ATTACK", g.getPhase());
     }
     

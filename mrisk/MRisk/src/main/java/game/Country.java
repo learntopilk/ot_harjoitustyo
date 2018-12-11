@@ -14,7 +14,7 @@ public class Country {
     private Player owner;
     private int value;
     private Integer troops;
-    public CountryView view;
+    private CountryView view;
     private int index;
     private boolean selected;
     private Color defaultColor = Color.BEIGE;
@@ -31,6 +31,7 @@ public class Country {
         
         //test
         this.game.addCountry(this);
+        System.out.println("added " + this.name);
     }
 
     public String getName() {
@@ -144,6 +145,10 @@ public class Country {
 
     public boolean isSelected() {
         return this.selected;
+    }
+    
+    public CountryView getCountryView() {
+        return this.view;
     }
 
 }

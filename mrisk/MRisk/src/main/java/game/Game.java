@@ -43,11 +43,17 @@ public class Game {
         // TODO
     }
 */
+    /**
+     * Begins the game by starting the country selection phase.
+     */
     public void start() {
         this.startCountrySelection();
     }
 
-    // GAME PHASE CYCLES
+    /**
+     * Begins the deployment phase. Can be called many times over a single game.
+     * Also calculates the number of troops each player has to deploy.
+     */
     public void startTroopDeployment() {
         phase = "DEPLOYMENT";
         this.calculateTroopsToDeploy();
@@ -55,6 +61,10 @@ public class Game {
         // PLACING TROOPS
     }
     
+    /**
+     * Alternates between players in the deployment phase, or, if all troops have
+     * been deployed, moves the game to the attack phase.
+     */
     public void nextDeploymentTurn() {
         if (this.troopsLeftToDeploy > 0) {
             do {
@@ -65,16 +75,25 @@ public class Game {
         }
     }
 
-    public void startAttackPhase() {
+    private void startAttackPhase() {
         phase = "ATTACK";
         System.out.println("Moving on to attack phase");
     }
     
+    /**
+     * A helper function that indicates whether there are troops left to set.
+     * @return 
+     */
     public boolean troopsLeftToSet() {
         if (this.troopsLeftToDeploy > 0) return true;
         return false;
     }
     
+    /**
+     * Reduces the total number of troops left to deploy by one, or returns false
+     * if the number was already 0,
+     * @return If there were troops to remove, returns true. Else returns false.
+     */
     public boolean reduceTotalNumberOfTroopsLeftToDeploy() {
         if (this.troopsLeftToDeploy > 0){
             this.troopsLeftToDeploy--;
@@ -83,9 +102,14 @@ public class Game {
         return false;
     }
 
+    /**
+     * Begins the country selection phase. Can only be called once per game.
+     */
     public void startCountrySelection() {
         phase = "COUNTRYSELECTION";
-        countriesLeftToSelect = 4;
+        //this.countriesLeftToSelect = 5;
+        countriesLeftToSelect = this.countries.size();
+        System.out.println("countries: " + this.countries.size());
         currentPlayer = p1;
 
     }
@@ -138,6 +162,7 @@ public class Game {
      */
     public void addCountry(Country c) {
         this.countries.add(c);
+        this.countriesLeftToSelect++;
     }
 
     /**
@@ -171,6 +196,10 @@ public class Game {
         return false;
     }
     
+    /**
+     * Returns the number of countries that are not owned by any player.
+     * @return Number of countries that currently do not have an owner
+     */
     public int getNumberOfCountriesRemainingToSelect() {
         return this.countriesLeftToSelect;
     }

@@ -9,10 +9,7 @@ import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -23,7 +20,7 @@ import javafx.scene.text.FontWeight;
 public class CountryView {
 
     private Country country;
-    public ImageView i;
+    private ImageView i;
     private Color color;
     Game game;
     private TextField troopNumberDisplay;
@@ -35,46 +32,55 @@ public class CountryView {
     public CountryView(Country country, String uri, Game g, double layoutY, double layoutX) {
         this.country = country;
         this.game = g;
-        //this.color = Color.BEIGE;
-        
-        troopNumberDisplay = new TextField();
-        troopNumberDisplay.setLayoutX(layoutX + 50);
-        troopNumberDisplay.setLayoutY(layoutY + 50);
-        troopNumberDisplay.setEditable(false);
-        troopNumberDisplay.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
-        troopNumberDisplay.setAlignment(Pos.CENTER);
-        troopNumberDisplay.setStyle(
-                "-fx-control-inner-background: black;"
-                +"-fx-border-radius: 20 20 20 20;" 
-                +"-fx-background-radius: 20 20 20 20;" 
-                +"-fx-text-fill: white;");
-        troopNumberDisplay.setPrefWidth(80d);
-        troopNumberDisplay.setPrefHeight(40d);
-        this.updateTroopDisplay();
 
         Image im = new Image(uri);
         ImageView countryView = new ImageView(im);
         this.i = countryView;
-        
+
         this.setColor(this.country.getDefaultColor());
         this.country.setView(this);
+        
         countryView.setPickOnBounds(false);
         countryView.setLayoutX(layoutX);
         countryView.setLayoutY(layoutY);
+        
+        this.addTroopDisplay();
+        this.updateTroopDisplay();
+        
         countryView.setOnMouseClicked((MouseEvent e) -> {
             this.country.handleClickEvent();
         });
 
     }
 
+    private void addTroopDisplay() {
+        troopNumberDisplay = new TextField();
+        troopNumberDisplay.setLayoutX(this.i.getLayoutX() + this.i.getImage().getWidth()/2-30);
+        troopNumberDisplay.setLayoutY(this.i.getLayoutY() + this.i.getImage().getHeight()/2-30);
+        troopNumberDisplay.setEditable(false);
+        troopNumberDisplay.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        troopNumberDisplay.setAlignment(Pos.CENTER);
+        troopNumberDisplay.setStyle(
+                "-fx-control-inner-background: black;"
+                + "-fx-border-radius: 20 20 20 20;"
+                + "-fx-background-radius: 20 20 20 20;"
+                + "-fx-text-fill: white;");
+        troopNumberDisplay.setPrefWidth(80d);
+        troopNumberDisplay.setPrefHeight(40d);
+    }
+
     public Country getCountry() {
         return this.country;
+    }
+
+    public ImageView getImageView() {
+        return this.i;
     }
 
     public void updateTroopDisplay() {
         troopNumberDisplay.setText(Integer.toString(this.country.getTroops()));
     }
-    
+
     public TextField getTextDisplay() {
         return this.troopNumberDisplay;
     }
@@ -92,13 +98,12 @@ public class CountryView {
         this.updateColorView();
     }
 
-    public void updateColorView() {
+    private void updateColorView() {
         Lighting lighting = new Lighting();
         lighting.setDiffuseConstant(1.0);
         lighting.setSpecularConstant(0.0);
         lighting.setSpecularExponent(0.0);
         lighting.setSurfaceScale(0.0);
-        //lighting.setLight(new Light.Distant(45, 45, game.getCurrentPlayer().getColor()));
         lighting.setLight(new Light.Distant(45, 45, this.color));
         this.i.setEffect(lighting);
         System.out.println("updating color of " + this.country.getName() + " to " + this.color.toString());
