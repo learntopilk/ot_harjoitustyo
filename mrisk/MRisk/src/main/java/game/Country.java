@@ -102,13 +102,11 @@ public class Country {
             this.view.updateTroopDisplay();
             this.game.reduceTotalNumberOfTroopsLeftToDeploy();
             this.game.nextDeploymentTurn();
-            // Update view and cycle player + check if other player has troops to commit
-        } else {
         }
     }
 
     public void handleAttackPhaseClick(String type) {
-
+        // TODO
     }
 
     public void deselect() {

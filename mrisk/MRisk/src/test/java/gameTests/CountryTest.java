@@ -37,6 +37,11 @@ public class CountryTest {
     }
     
     @Test
+    public void hasCountryView() {
+        assertNotNull(c.getCountryView());
+    }
+    
+    @Test
     public void ownerNotSetWhileInitializing() {
         Player owner = c.getOwner();
         assertEquals(owner, null);
