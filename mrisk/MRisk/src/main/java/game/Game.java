@@ -84,7 +84,9 @@ public class Game {
      * @return 
      */
     public boolean troopsLeftToSet() {
-        if (this.troopsLeftToDeploy > 0) return true;
+        if (this.troopsLeftToDeploy > 0) {
+            return true;
+        }
         return false;
     }
     
@@ -94,7 +96,7 @@ public class Game {
      * @return If there were troops to remove, returns true. Else returns false.
      */
     public boolean reduceTotalNumberOfTroopsLeftToDeploy() {
-        if (this.troopsLeftToDeploy > 0){
+        if (this.troopsLeftToDeploy > 0) {
             this.troopsLeftToDeploy--;
             return true;
         }

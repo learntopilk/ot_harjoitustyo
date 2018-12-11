@@ -79,8 +79,7 @@ public class Country {
     }
 
     public void handleSelectionPhaseClick() {
-        if (this.hasOwner()) {
-        } else {
+         if (!this.hasOwner()) {
             this.view.setColor(game.currentPlayer.getColor());
             this.setOwner(game.currentPlayer);
             this.troops = 1; 
@@ -106,7 +105,7 @@ public class Country {
     }
 
     public void handleAttackPhaseClick(String type) {
-        // TODO
+        System.out.println("S");
     }
 
     public void deselect() {
