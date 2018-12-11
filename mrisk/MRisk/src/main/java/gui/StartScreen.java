@@ -35,7 +35,7 @@ public class StartScreen extends Application {
     private Scene start;
     private Scene gameScene;
     private Game game;
-    BackgroundImage bg;
+    private BackgroundImage bg;
     private String playerInTurn;
     private String turnPhase;
     private TextField phaseDisplay = new TextField();
@@ -54,18 +54,8 @@ public class StartScreen extends Application {
 
         this.stage = primaryStage;
         primaryStage.setTitle("M-RISK");
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-                btn.setText("Hello World said");
-            }
-        });
-        
-        Button startGame = new Button();
-        startGame.setText("Start Game");
+
+        Button startGame = new Button("Start Game");
         startGame.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -74,8 +64,7 @@ public class StartScreen extends Application {
             }
         });
 
-        Button quitGame = new Button();
-        quitGame.setText("Quit game");
+        Button quitGame = new Button("Quit game");
         quitGame.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -84,8 +73,7 @@ public class StartScreen extends Application {
             }
         });
 
-        Button seeStats = new Button();
-        seeStats.setText("Statistics");
+        Button seeStats = new Button("Stats");
         seeStats.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -94,16 +82,10 @@ public class StartScreen extends Application {
             }
         });
 
-        GridPane grid = new GridPane();
-        grid.setBackground(new Background(bg));
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(20);
-        grid.setVgap(20);
-
+        GridPane grid = createStartScreenGrid();
         grid.add(startGame, 0, 0);
-        grid.add(btn, 0, 1);
-        grid.add(seeStats, 0, 2);
-        grid.add(quitGame, 0, 3);
+        grid.add(seeStats, 0, 1);
+        grid.add(quitGame, 0, 2);
 
         Scene startScene = new Scene(grid, 900, 700);
         this.start = startScene;
@@ -111,21 +93,30 @@ public class StartScreen extends Application {
         p = startScene;
         primaryStage.setScene(p);
         primaryStage.show();
-        
+
         game.start();
         update();
+    }
+    
+    private GridPane createStartScreenGrid() {
+        GridPane grid = new GridPane();
+        grid.setBackground(new Background(bg));
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(20);
+        grid.setVgap(20);
+        return grid;
     }
 
     private void goToStartScreen() {
         stage.setScene(start);
     }
-    
+
     public void update() {
         this.playerInTurn = game.getCurrentPlayer().getName();
         System.out.println(game.getCurrentPlayer().getName());
         this.updateTurnDisplay();
     }
-    
+
     private void goToStats() {
         GridPane statGrid = new GridPane();
 
@@ -166,43 +157,49 @@ public class StartScreen extends Application {
     private Scene createGameScene() {
         Pane pane = new Pane();
         pane.setBackground(new Background(bg));
+        
+        Button menuBtn = menuButton();
+        pane.getChildren().add(menuBtn);
 
-        Button menuBtn = new Button();
-        menuBtn.setText("Return to Main Screen");
-        menuBtn.setOnAction(new EventHandler<ActionEvent>() {
+        updateTurnDisplay();
+        phaseDisplay.setLayoutX(screenWidth);
+        phaseDisplay.setLayoutY(0);
+        pane.getChildren().add(phaseDisplay);
+
+        this.initializeCountries(pane);
+
+        // MORE COUNTRIES
+        return new Scene(pane, 900, 700);
+    }
+
+    public Button menuButton() {
+        Button b = new Button();
+        b.setText("Return to Main Screen");
+        b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Returning to menu screen from main screen");
                 goToStartScreen();
             }
         });
+        return b;
+    }
 
-        pane.getChildren().add(menuBtn);
-        
-        updateTurnDisplay();
-        phaseDisplay.setLayoutX(screenWidth);
-        phaseDisplay.setLayoutY(0);
-        pane.getChildren().add(phaseDisplay);
-
+    public void initializeCountries(Pane p) {
         CountryView florida = new CountryView(new Country("Florida", 4, 0, this.game), "/florida.png", this.game, 453d, 408d);
-        pane.getChildren().add(florida.i);
-        pane.getChildren().add(florida.getTextDisplay());
+        p.getChildren().add(florida.i);
+        p.getChildren().add(florida.getTextDisplay());
 
         CountryView georgia = new CountryView(new Country("Georgia", 3, 1, this.game), "/georgia.png", this.game, 289d, 460d);
-        pane.getChildren().add(georgia.i);
-        pane.getChildren().add(georgia.getTextDisplay());
-        
+        p.getChildren().add(georgia.i);
+        p.getChildren().add(georgia.getTextDisplay());
+
         CountryView alabama = new CountryView(new Country("Alabama", 2, 2, this.game), "/alabama.png", this.game, 300d, 367d);
-        pane.getChildren().add(alabama.i);
-        pane.getChildren().add(alabama.getTextDisplay());
-        
+        p.getChildren().add(alabama.i);
+        p.getChildren().add(alabama.getTextDisplay());
+
         CountryView southCarolina = new CountryView(new Country("South Carolina", 3, 3, this.game), "/southcarolina.png", this.game, 267d, 539d);
-        pane.getChildren().add(southCarolina.i);
-        pane.getChildren().add(southCarolina.getTextDisplay());
-        
-        
-        // MORE COUNTRIES
-        
-        return new Scene(pane, 900, 700);
+        p.getChildren().add(southCarolina.i);
+        p.getChildren().add(southCarolina.getTextDisplay());
     }
 }

@@ -7,4 +7,5 @@
 | 25.11.2018 | 4h | Osavaltioiden luominen: FLORIDA!!! + eventhandlerit ja gamesceneen siirtyminen |
 | 3.12.2018 | 4h | Uusi osavaltio, väritestausta |
 | 4.12.2018 | 4h | Kaksi uutta osavaltiota, Osavaltioiden jakaminen pelaajille sekä käytettävissä olevien joukkojen laskenta luotu. Seuraavaksi joukkojen asettaminen osavaltioihin |
-| __Yht__ | 20h |  |
+| 10.12.2018 | 4h | Joukkolaskurit valtioille + joukkojen sijoitusvaihe toimii. Pelistä siis puuttuu vielä hyökkäysvaihe. |
+| __Yht__ | 24h |  |
