@@ -75,8 +75,12 @@ public class Game {
         return false;
     }
     
-    public void reduceTotalNumberOfTroopsLeftToDeploy() {
-        if (this.troopsLeftToDeploy > 0) this.troopsLeftToDeploy--;
+    public boolean reduceTotalNumberOfTroopsLeftToDeploy() {
+        if (this.troopsLeftToDeploy > 0){
+            this.troopsLeftToDeploy--;
+            return true;
+        }
+        return false;
     }
 
     public void startCountrySelection() {
