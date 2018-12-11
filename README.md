@@ -25,7 +25,7 @@ Check out my latest release [here](https://github.com/learntopilk/ot_harjoitusty
 
 ## Documentation
 
-Instructions (TODO)
+[Instructions](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Kayttoohje.md)
 
 [Project requirements](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) (In Finnish)
 
