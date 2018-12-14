@@ -1,6 +1,7 @@
 package game;
 
 import gui.CountryView;
+import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -18,6 +19,7 @@ public class Country {
     private boolean selected;
     private Color defaultColor = Color.BEIGE;
     private Game game;
+    private ArrayList<Country> adjacentCountries;
 
     public Country(String name, int value, int index, Game game) {
         this.name = name;
@@ -27,6 +29,7 @@ public class Country {
         this.game = game;
         this.troops = 0;
         this.game.addCountry(this);
+        this.adjacentCountries = new ArrayList<>();
     }
 
     public String getName() {
@@ -59,6 +62,10 @@ public class Country {
 
     public void select() {
         this.selected = true;
+    }
+    
+    public void addNeighbor(Country c) {
+        this.adjacentCountries.add(c);
     }
 
     public void handleClickEvent() {

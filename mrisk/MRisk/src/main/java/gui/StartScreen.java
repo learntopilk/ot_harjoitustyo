@@ -198,6 +198,18 @@ public class StartScreen extends Application {
         CountryView louisiana = new CountryView(new Country("Louisiana", 3, 1, this.game), "/louisiana.png", this.game, 417d, 165d);
         p.getChildren().add(louisiana.getImageView());
         p.getChildren().add(louisiana.getTextDisplay());
+        
+        CountryView arkansas = new CountryView(new Country("Arkansas", 3, 1, this.game), "/arkansas.png", this.game, 259d, 135d);
+        p.getChildren().add(arkansas.getImageView());
+        p.getChildren().add(arkansas.getTextDisplay());
+        
+        CountryView kentucky = new CountryView(new Country("Kentucky", 3, 1, this.game), "/kentucky.png", this.game, 114d, 308d);
+        p.getChildren().add(kentucky.getImageView());
+        p.getChildren().add(kentucky.getTextDisplay());
+        
+        CountryView virginia = new CountryView(new Country("virginia", 3, 1, this.game), "/virginia.png", this.game, 57d, 537d);
+        p.getChildren().add(virginia.getImageView());
+        p.getChildren().add(virginia.getTextDisplay());
     
     }
 }
