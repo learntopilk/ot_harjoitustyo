@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.control.Tooltip;
 
 /**
  *
@@ -50,6 +51,9 @@ public class CountryView {
         countryView.setOnMouseClicked((MouseEvent e) -> {
             this.country.handleClickEvent();
         });
+        
+        Tooltip t = new Tooltip(this.country.getName() + ". Value: " + this.country.getTroopValue());
+        Tooltip.install(i, t);
 
     }
 
