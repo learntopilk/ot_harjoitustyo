@@ -2,6 +2,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javafx.scene.paint.Color;
 
@@ -17,6 +18,7 @@ public class Game {
     Player currentPlayer;
     int round;
     private List<Country> countries;
+    private List<Connection> connections;
     private Country selectedCountry;
     private String endButtonText;
     private String phase;
@@ -29,13 +31,14 @@ public class Game {
 
     public Game() {
         this.countries = new ArrayList<>();
-        players = 2;
-        p1 = new Player(Color.GREEN);
-        p2 = new Player(Color.PURPLE);
-        currentPlayer = p1;
-        phase = "COUNTRYSELECTION";
-        round = 1;
-        troopsLeftToDeploy = 0;
+        this.connections = new ArrayList<>();
+        this.players = 2;
+        this.p1 = new Player(Color.GREEN);
+        this.p2 = new Player(Color.PURPLE);
+        this.currentPlayer = p1;
+        this.phase = "COUNTRYSELECTION";
+        this.round = 1;
+        this.troopsLeftToDeploy = 0;
 
     }
 /*
@@ -77,6 +80,15 @@ public class Game {
 
     private void startAttackPhase() {
         phase = "ATTACK";
+    }
+    
+    public Country getCountryByName(String name) {
+        for (Country c: countries) {
+            if (c.getName().equals(name)){
+                return c;
+            }
+        }
+        return null;
     }
     
     /**
