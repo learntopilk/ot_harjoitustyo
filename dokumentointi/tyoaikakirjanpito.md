@@ -9,4 +9,6 @@
 | 4.12.2018 | 4h | Kaksi uutta osavaltiota, Osavaltioiden jakaminen pelaajille sekä käytettävissä olevien joukkojen laskenta luotu. Seuraavaksi joukkojen asettaminen osavaltioihin |
 | 10.12.2018 | 4h | Joukkolaskurit valtioille + joukkojen sijoitusvaihe toimii. Pelistä siis puuttuu vielä hyökkäysvaihe. |
 | 11.12.2018 | 3h | Refaktorointia sekä lisää osavaltioita. Muutama puuttuu vielä. |
-| __Yht__ | 24h |  |
+| 14.12.2018 | 2h | Osavaltiot lisätty. Valmisteltu osavaltioiden säilyttämistä ulkopuolisessa tiedostossa. |
+| 14.12.2018 | 2h | Osavaltiot luetaan nyt tiedostosta `countries.csv`. Country-olioihin lisätään nyt tieto naapureista. |
+| __Yht__ | 28h |  |
