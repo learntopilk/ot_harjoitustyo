@@ -1,6 +1,7 @@
 
 package game;
 
+import DAO.CountryDAO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Game {
     private String phase;
     private int countriesLeftToSelect;
     private int troopsLeftToDeploy;
+    private CountryDAO countrySystem;
 
     public static void main(String[] args) {
 
@@ -39,7 +41,8 @@ public class Game {
         this.phase = "COUNTRYSELECTION";
         this.round = 1;
         this.troopsLeftToDeploy = 0;
-
+        countrySystem = new CountryDAO(this);
+        this.initializeCountries();
     }
 /*
     public void attack(int attacker, int defender) {
@@ -51,6 +54,11 @@ public class Game {
      */
     public void start() {
         this.startCountrySelection();
+    }
+    
+    public void initializeCountries() {
+        System.out.println("INITIALIZING");
+        this.countries = countrySystem.readCountries();
     }
 
     /**

@@ -171,6 +171,15 @@ public class StartScreen extends Application {
     }
 
     private void initializeCountries(Pane p) {
+        
+        for (Country c : this.game.getCountries()) {
+            Double[] coordinates = c.getCoordinates();
+            CountryView cw = new CountryView(c, c.getImageURI(), this.game, coordinates[0], coordinates[1]);
+            p.getChildren().add(cw.getImageView());
+            p.getChildren().add(cw.getTextDisplay());
+        }
+        
+        /*
         CountryView florida = new CountryView(new Country("Florida", 4, 0, this.game), "/florida.png", this.game, 453d, 408d);
         p.getChildren().add(florida.getImageView());
         p.getChildren().add(florida.getTextDisplay());
@@ -217,6 +226,6 @@ public class StartScreen extends Application {
         
         CountryView northcarolina = new CountryView(new Country("Northcarolina", 2, 1, this.game), "/northcarolina.png", this.game, 155d, 510d);
         p.getChildren().add(northcarolina.getImageView());
-        p.getChildren().add(northcarolina.getTextDisplay());    
+        p.getChildren().add(northcarolina.getTextDisplay());    */
     }
 }

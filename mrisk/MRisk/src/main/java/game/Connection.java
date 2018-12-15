@@ -12,15 +12,15 @@ package game;
  */
 public class Connection {
     
-    private String start;
+    private Country start;
     private String end;
     
-    public Connection(String start, String end) {
+    public Connection(Country start, String end) {
         this.start = start;
         this.end = end;
     }
     
-    public String getStart() {
+    public Country getStart() {
         return this.start;
     }
     
