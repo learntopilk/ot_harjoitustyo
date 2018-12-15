@@ -157,7 +157,6 @@ public class StartScreen extends Application {
 
         this.initializeCountries(pane);
 
-        // MORE COUNTRIES
         return new Scene(pane, 900, 700);
     }
 
@@ -178,54 +177,5 @@ public class StartScreen extends Application {
             p.getChildren().add(cw.getImageView());
             p.getChildren().add(cw.getTextDisplay());
         }
-        
-        /*
-        CountryView florida = new CountryView(new Country("Florida", 4, 0, this.game), "/florida.png", this.game, 453d, 408d);
-        p.getChildren().add(florida.getImageView());
-        p.getChildren().add(florida.getTextDisplay());
-
-        CountryView georgia = new CountryView(new Country("Georgia", 3, 1, this.game), "/georgia.png", this.game, 289d, 460d);
-        p.getChildren().add(georgia.getImageView());
-        p.getChildren().add(georgia.getTextDisplay());
-
-        CountryView alabama = new CountryView(new Country("Alabama", 2, 2, this.game), "/alabama.png", this.game, 300d, 367d);
-        p.getChildren().add(alabama.getImageView());
-        p.getChildren().add(alabama.getTextDisplay());
-
-        CountryView southCarolina = new CountryView(new Country("South Carolina", 3, 3, this.game), "/southcarolina.png", this.game, 267d, 539d);
-        p.getChildren().add(southCarolina.getImageView());
-        p.getChildren().add(southCarolina.getTextDisplay());
-        
-        CountryView tennessee = new CountryView(new Country("Tennessee", 3, 1, this.game), "/tennessee.png", this.game, 208d, 299d);
-        p.getChildren().add(tennessee.getImageView());
-        p.getChildren().add(tennessee.getTextDisplay());
-        
-        CountryView mississippi = new CountryView(new Country("Mississippi", 1, 1, this.game), "/mississippi.png", this.game, 317d, 253d);
-        p.getChildren().add(mississippi.getImageView());
-        p.getChildren().add(mississippi.getTextDisplay());
-        
-        CountryView louisiana = new CountryView(new Country("Louisiana", 2, 1, this.game), "/louisiana.png", this.game, 417d, 165d);
-        p.getChildren().add(louisiana.getImageView());
-        p.getChildren().add(louisiana.getTextDisplay());
-        
-        CountryView arkansas = new CountryView(new Country("Arkansas", 1, 1, this.game), "/arkansas.png", this.game, 259d, 135d);
-        p.getChildren().add(arkansas.getImageView());
-        p.getChildren().add(arkansas.getTextDisplay());
-        
-        CountryView kentucky = new CountryView(new Country("Kentucky", 1, 1, this.game), "/kentucky.png", this.game, 114d, 308d);
-        p.getChildren().add(kentucky.getImageView());
-        p.getChildren().add(kentucky.getTextDisplay());
-        
-        CountryView virginia = new CountryView(new Country("Virginia", 2, 1, this.game), "/virginia.png", this.game, 57d, 537d);
-        p.getChildren().add(virginia.getImageView());
-        p.getChildren().add(virginia.getTextDisplay());
-        
-        CountryView westvirginia = new CountryView(new Country("Westvirginia", 1, 1, this.game), "/westvirginia.png", this.game, 29d, 538d);
-        p.getChildren().add(westvirginia.getImageView());
-        p.getChildren().add(westvirginia.getTextDisplay());
-        
-        CountryView northcarolina = new CountryView(new Country("Northcarolina", 2, 1, this.game), "/northcarolina.png", this.game, 155d, 510d);
-        p.getChildren().add(northcarolina.getImageView());
-        p.getChildren().add(northcarolina.getTextDisplay());    */
     }
 }

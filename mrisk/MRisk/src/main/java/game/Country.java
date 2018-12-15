@@ -126,7 +126,11 @@ public class Country {
     }
 
     public void handleAttackPhaseClick(String type) {
-        System.out.println("S");
+        System.out.println("Clicked " +this.getName());
+        System.out.println("Neighbors: " + this.adjacentCountries.size());
+        for(Country c: this.adjacentCountries) {
+            System.out.println(c.getName());
+        }
     }
 
     public void deselect() {

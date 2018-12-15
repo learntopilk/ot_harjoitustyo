@@ -8,5 +8,5 @@ Louisiana;2;/louisiana.png;417d;165d;Arkansas;Mississippi;
 Arkansas;1;/arkansas.png;259d;135d;Louisiana;Mississippi;Tennessee;
 Kentucky;1;/kentucky.png;114d;308d;Tennessee;Virginia;West%20Virginia;
 Virginia;2;/virginia.png;57d;537d;North%20Carolina;Tennessee;Kentucky;West%20Virginia;
-West%20Virginia;1;/westvirginia.png;29d;538d;Virginia;kentucky;
+West%20Virginia;1;/westvirginia.png;29d;538d;Virginia;Kentucky;
 North%20Carolina;2;/northcarolina.png;155d;510d;Virginia;Tennessee;Georgia;South%20Carolina;
