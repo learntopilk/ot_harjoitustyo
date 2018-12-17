@@ -10,5 +10,5 @@
 | 10.12.2018 | 4h | Joukkolaskurit valtioille + joukkojen sijoitusvaihe toimii. Pelistä siis puuttuu vielä hyökkäysvaihe. |
 | 11.12.2018 | 3h | Refaktorointia sekä lisää osavaltioita. Muutama puuttuu vielä. |
 | 14.12.2018 | 2h | Osavaltiot lisätty. Valmisteltu osavaltioiden säilyttämistä ulkopuolisessa tiedostossa. |
-| 14.12.2018 | 2h | Osavaltiot luetaan nyt tiedostosta `countries.csv`. Country-olioihin lisätään nyt tieto naapureista. |
+| 15.12.2018 | 2h | Osavaltiot luetaan nyt tiedostosta `countries.csv`. Country-olioihin lisätään nyt tieto naapureista. |
 | __Yht__ | 28h |  |
