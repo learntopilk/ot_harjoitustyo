@@ -62,7 +62,6 @@ public class CountryDAO {
 
     private Country findCountryByName(String name) {
         for (Country c : this.countries) {
-            System.out.println(c.getName() + ", " + name);
             if (c.getName().equals(name)) {
                 return c;
             }
@@ -76,9 +75,7 @@ public class CountryDAO {
         int i = 0;
         while (!connections.isEmpty()) {
             i++;
-            System.out.println(i);
             Connection conn = connections.pollFirst();
-            System.out.println(conn.getEnd());
             Country end = this.findCountryByName(conn.getEnd());
             if (end == null) {
                 continue;

@@ -41,6 +41,7 @@ public class StartScreen extends Application {
     private String playerInTurn;
     private String turnPhase;
     private TextField phaseDisplay = new TextField();
+    private Button endTurn;
 
     public StartScreen() {
         game = new Game();
@@ -104,6 +105,15 @@ public class StartScreen extends Application {
     public void update() {
         this.playerInTurn = game.getCurrentPlayer().getName();
         this.updateTurnDisplay();
+        if (this.game.getPhase().equals("ATTACK")) {
+            if (this.endTurn != null) {
+                this.endTurn.setVisible(true);
+                System.out.println("1");
+            } else {
+                this.endTurn.setVisible(false);
+                System.out.println("2");
+            }
+        }
     }
 
     private void goToStats() {
@@ -118,7 +128,6 @@ public class StartScreen extends Application {
         statGrid.setAlignment(Pos.CENTER);
         statGrid.add(returnBtn, 0, 0);
         Scene statScene = new Scene(statGrid, 900, 700);
-        System.out.println("1");
         stage.setScene(statScene);
     }
 
@@ -171,6 +180,10 @@ public class StartScreen extends Application {
         phaseDisplay.setDisable(true);
         pane.getChildren().add(phaseDisplay);
 
+        this.endTurn = endTurnButton();
+        pane.getChildren().add(endTurn);
+        endTurn.setVisible(false);
+
         this.initializeCountries(pane);
 
         return new Scene(pane, 900, 700);
@@ -193,5 +206,18 @@ public class StartScreen extends Application {
             p.getChildren().add(cw.getImageView());
             p.getChildren().add(cw.getTextDisplay());
         }
+    }
+
+    private Button endTurnButton() {
+        Button b = new Button("End turn");;
+        b.setLayoutY(30d);
+        b.setOnAction((ActionEvent e) -> {
+            this.game.advanceRound();
+            System.out.println("Advancing round...");
+            if (this.game.getPhase().equals("ATTACK")) {
+                b.setVisible(false);
+            }
+        });
+        return b;
     }
 }

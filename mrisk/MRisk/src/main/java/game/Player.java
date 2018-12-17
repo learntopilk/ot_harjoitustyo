@@ -58,7 +58,6 @@ public class Player {
     public void addTotalTroops(int num) {
         this.totalTroops += num;
         this.troopsToSet += num;
-        System.out.println("Player " + this.name + " has " + this.totalTroops + " troops.");
     }
     
     /**

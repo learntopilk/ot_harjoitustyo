@@ -2,6 +2,7 @@ package game;
 
 import gui.CountryView;
 import java.util.ArrayList;
+import java.util.Random;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -77,6 +78,12 @@ public class Country {
         this.selected = true;
         this.game.selectCountry(this);
     }
+    
+    public boolean reduceTroopsByOne() {
+        this.troops--;
+        this.view.updateTroopDisplay();
+        return this.troops > 1;
+    }
 
     public void addNeighbor(Country c) {
         this.adjacentCountries.add(c);
@@ -91,11 +98,10 @@ public class Country {
                 this.handleDeploymentPhaseClick();
                 break;
             case "ATTACK":
-                this.handleAttackPhaseClick("placeholder");
+                this.handleAttackPhaseClick("");
                 break;
             default:
                 System.out.println("Phase: " + game.getPhase());
-                System.out.println("You're in deep shit, yo");
         }
     }
 
@@ -130,11 +136,10 @@ public class Country {
             this.deselect();
         } else {
             if (this.game.getSelectedCountry() != null) {
-                // Attacks and troop movements
                 if (this.owner.equals(this.game.getCurrentPlayer())) {
-                    System.out.println("troop movement");
+                    this.moveTroops();
                 } else {
-                    System.out.println("Attack move");
+                    this.receiveAttack();
                 }
             } else {
                 if (this.owner.equals(this.game.getCurrentPlayer())) {
@@ -142,6 +147,41 @@ public class Country {
                 }
             }
         }
+    }
+    
+    public void receiveAttack () {
+        Country c = game.getSelectedCountry();
+        Random r = new Random();
+        int attackerValue = r.nextInt(100)+1;
+        int defenderValue = r.nextInt(100)+1;
+        if (attackerValue > defenderValue) {
+            this.reduceTroopsByOne();
+            if (this.troops == 0) {
+                this.setOwner(this.game.getCurrentPlayer());
+                c.reduceTroopsByOne();
+                this.troops = 1;
+                this.view.updateTroopDisplay();
+                c.deselect();
+            }
+        } else {
+            c.reduceTroopsByOne();
+            this.view.updateTroopDisplay();
+            game.getCurrentPlayer().removeOneTroop();
+            if (c.getTroops() == 1) {
+                c.deselect();
+            }
+        }
+        
+    }
+    
+    private void moveTroops() {
+        this.troops++;
+        if (game.getSelectedCountry().reduceTroopsByOne()) {
+            
+        } else {
+            game.getSelectedCountry().deselect();
+        }
+        this.view.updateTroopDisplay();
     }
 
     private void selectThisCountry() {

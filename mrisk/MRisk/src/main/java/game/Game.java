@@ -1,4 +1,3 @@
-
 package game;
 
 import DAO.CountryDAO;
@@ -26,6 +25,7 @@ public class Game {
     private int countriesLeftToSelect;
     private int troopsLeftToDeploy;
     private CountryDAO countrySystem;
+    private int roundNumber;
 
     public static void main(String[] args) {
 
@@ -43,6 +43,7 @@ public class Game {
         this.troopsLeftToDeploy = 0;
         countrySystem = new CountryDAO(this);
         this.initializeCountries();
+        this.roundNumber = 0;
     }
 
     /**
@@ -51,7 +52,7 @@ public class Game {
     public void start() {
         this.startCountrySelection();
     }
-    
+
     public void initializeCountries() {
         System.out.println("INITIALIZING");
         this.countries = countrySystem.readCountries();
@@ -65,12 +66,11 @@ public class Game {
         phase = "DEPLOYMENT";
         this.calculateTroopsToDeploy();
         currentPlayer = p1;
-        // PLACING TROOPS
     }
-    
+
     /**
-     * Alternates between players in the deployment phase, or, if all troops have
-     * been deployed, moves the game to the attack phase.
+     * Alternates between players in the deployment phase, or, if all troops
+     * have been deployed, moves the game to the attack phase.
      */
     public void nextDeploymentTurn() {
         if (this.troopsLeftToDeploy > 0) {
@@ -85,19 +85,20 @@ public class Game {
     private void startAttackPhase() {
         phase = "ATTACK";
     }
-    
+
     public Country getCountryByName(String name) {
-        for (Country c: countries) {
-            if (c.getName().equals(name)){
+        for (Country c : countries) {
+            if (c.getName().equals(name)) {
                 return c;
             }
         }
         return null;
     }
-    
+
     /**
      * A helper function that indicates whether there are troops left to set.
-     * @return 
+     *
+     * @return
      */
     public boolean troopsLeftToSet() {
         if (this.troopsLeftToDeploy > 0) {
@@ -105,10 +106,11 @@ public class Game {
         }
         return false;
     }
-    
+
     /**
-     * Reduces the total number of troops left to deploy by one, or returns false
-     * if the number was already 0,
+     * Reduces the total number of troops left to deploy by one, or returns
+     * false if the number was already 0,
+     *
      * @return If there were troops to remove, returns true. Else returns false.
      */
     public boolean reduceTotalNumberOfTroopsLeftToDeploy() {
@@ -118,7 +120,7 @@ public class Game {
         }
         return false;
     }
-    
+
     public int getNumberOfTroopsLeftToDeploy() {
         return this.troopsLeftToDeploy;
     }
@@ -134,8 +136,8 @@ public class Game {
     }
 
     /**
-     * Calculates the number of troops each player can deploy on the next turn, based on the 
-     * values of the countries each player owns.
+     * Calculates the number of troops each player can deploy on the next turn,
+     * based on the values of the countries each player owns.
      */
     public void calculateTroopsToDeploy() {
         for (Country c : this.countries) {
@@ -150,10 +152,20 @@ public class Game {
     }
 
     /**
-     * INCOMPLETE A method that completes all actions required for ending a round.
+     * INCOMPLETE A method that completes all actions required for ending a
+     * round.
      */
     public void advanceRound() {
-        cyclePlayer();
+        if (this.roundNumber == 0) { // later on, players.length;
+            this.cyclePlayer();
+            this.roundNumber++;
+        } else {
+            this.roundNumber = 0;
+            this.startTroopDeployment();
+        }
+        if (this.selectedCountry != null) {
+            this.selectedCountry.deselect();
+        }
     }
 
     /**
@@ -169,6 +181,7 @@ public class Game {
 
     /**
      * Adds a country to the game's list of countries.
+     *
      * @param c The Country to add to the list.
      */
     public void addCountry(Country c) {
@@ -178,6 +191,7 @@ public class Game {
 
     /**
      * Allows access to the list of countries currently in the game.
+     *
      * @return List of countries
      */
     public List<Country> getCountries() {
@@ -186,18 +200,19 @@ public class Game {
 
     /**
      * Returns a country by index (its index number in the list of countries).
+     *
      * @param index
      * @return Country at the specified index
      */
-    
     public Country getCountry(int index) {
         return this.countries.get(index);
     }
-    
 
     /**
      * Subtracts one from the number of countries that do not have an owner.
-     * @return true if countries remain after the operation, false if all countries have been assigned to an owner.
+     *
+     * @return true if countries remain after the operation, false if all
+     * countries have been assigned to an owner.
      */
     public boolean removeCountryToSet() {
         this.countriesLeftToSelect--;
@@ -206,9 +221,10 @@ public class Game {
         }
         return false;
     }
-    
+
     /**
      * Returns the number of countries that are not owned by any player.
+     *
      * @return Number of countries that currently do not have an owner
      */
     public int getNumberOfCountriesRemainingToSelect() {
@@ -216,31 +232,32 @@ public class Game {
     }
 
     /**
-     * 
+     *
      * @return The country that is currently selected by the player in turn.
      */
     public Country getSelectedCountry() {
         return this.selectedCountry;
     }
 
-  public void selectCountry(Country c) {
+    public void selectCountry(Country c) {
         this.selectedCountry = c;
     }
 
     /**
      * Deselects the specified country.
+     *
      * @param index Country to deselectd
      */
     public void deselectCountry(int index) {
         this.selectedCountry = null;
     }
-    
+
     public void removeSelectedCountry() {
         this.selectedCountry = null;
     }
 
     /**
-     * 
+     *
      * @return The player set as having their turn.
      */
     public Player getCurrentPlayer() {
@@ -249,7 +266,9 @@ public class Game {
 
     /**
      * Returns a string representing the current game cycle.
-     * @return The current phase. Possible values are DEPLOYMENT, COUNTRYSELECTION, and ATTACK.
+     *
+     * @return The current phase. Possible values are DEPLOYMENT,
+     * COUNTRYSELECTION, and ATTACK.
      */
     public String getPhase() {
         return this.phase;
