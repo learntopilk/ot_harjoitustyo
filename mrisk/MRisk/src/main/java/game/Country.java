@@ -12,17 +12,17 @@ import javafx.scene.paint.Color;
  */
 public class Country {
 
-    private String name;
+    private final String name;
     private Player owner;
-    private int value;
+    private final int value;
     private Integer troops;
     private CountryView view;
     private boolean selected;
-    private Color defaultColor;
-    private Game game;
-    private ArrayList<Country> adjacentCountries;
-    private double layoutY;
-    private double layoutX;
+    private final Color defaultColor;
+    private final Game game;
+    private final ArrayList<Country> adjacentCountries;
+    private final double layoutY;
+    private final double layoutX;
     private String imageURI;
 
     public Country(String name, int value, int index, Game game, double Yoffset, double Xoffset) {
