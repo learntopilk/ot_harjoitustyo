@@ -11,4 +11,5 @@
 | 11.12.2018 | 3h | Refaktorointia sekä lisää osavaltioita. Muutama puuttuu vielä. |
 | 14.12.2018 | 2h | Osavaltiot lisätty. Valmisteltu osavaltioiden säilyttämistä ulkopuolisessa tiedostossa. |
 | 15.12.2018 | 2h | Osavaltiot luetaan nyt tiedostosta `countries.csv`. Country-olioihin lisätään nyt tieto naapureista. |
-| __Yht__ | 28h |  |
+| 18.12.2018 | 2h | Häksäsin vuoronäyttöön värinvaihdon sekä pelivaiheen osoituksen. Nyt hyökkäysvaiheessa ensimmäinen pelaaja voi valita osavaltion, jossa on enemmän kuin 1 solttu. |
+| __Yht__ | 30h |  |

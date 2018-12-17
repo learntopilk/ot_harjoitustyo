@@ -44,11 +44,7 @@ public class Game {
         countrySystem = new CountryDAO(this);
         this.initializeCountries();
     }
-/*
-    public void attack(int attacker, int defender) {
-        // TODO
-    }
-*/
+
     /**
      * Begins the game by starting the country selection phase.
      */
@@ -227,30 +223,19 @@ public class Game {
         return this.selectedCountry;
     }
 
-    /**
-     * Sets a country as selected by the player currently in turn.
-     * @param index Index of the country to select
-     */
-    public void selectCountry(int index) {
-        Country oldCountry = this.selectedCountry;
-        if (oldCountry != null) {
-            oldCountry.deselect();
-        }
-
-        this.selectedCountry = getCountry(index);
-        this.selectedCountry.select();
+  public void selectCountry(Country c) {
+        this.selectedCountry = c;
     }
 
-    
     /**
      * Deselects the specified country.
      * @param index Country to deselectd
      */
     public void deselectCountry(int index) {
-        if (this.selectedCountry == null) {
-            return;
-        }
-        this.selectedCountry.deselect();
+        this.selectedCountry = null;
+    }
+    
+    public void removeSelectedCountry() {
         this.selectedCountry = null;
     }
 

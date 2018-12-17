@@ -144,7 +144,7 @@ public class StartScreen extends Application {
     }
 
     /**
-     * Updates the turn display to indicate whose turn it is. NOT WORKING YET
+     * Updates the turn display to indicate whose turn it is. Utilizes a timer.
      */
     public void updateTurnDisplay() {
         phaseDisplay.setText(this.game.getPhase() + ": " + playerInTurn);

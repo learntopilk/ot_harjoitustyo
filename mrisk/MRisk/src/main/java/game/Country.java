@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-
 /**
  *
  * @author joonas
@@ -41,11 +40,11 @@ public class Country {
     public String getName() {
         return this.name;
     }
-    
+
     public void setImageURI(String uri) {
         this.imageURI = uri;
     }
-    
+
     public String getImageURI() {
         return this.imageURI;
     }
@@ -76,8 +75,9 @@ public class Country {
 
     public void select() {
         this.selected = true;
+        this.game.selectCountry(this);
     }
-    
+
     public void addNeighbor(Country c) {
         this.adjacentCountries.add(c);
     }
@@ -100,10 +100,10 @@ public class Country {
     }
 
     public void handleSelectionPhaseClick() {
-         if (!this.hasOwner()) {
+        if (!this.hasOwner()) {
             this.view.setColor(game.currentPlayer.getColor());
             this.setOwner(game.currentPlayer);
-            this.troops = 1; 
+            this.troops = 1;
             this.owner.addTotalTroops(1);
             this.view.updateTroopDisplay();
             boolean countriesLeft = this.game.removeCountryToSet();
@@ -126,15 +126,42 @@ public class Country {
     }
 
     public void handleAttackPhaseClick(String type) {
-        System.out.println("Clicked " +this.getName());
-        System.out.println("Neighbors: " + this.adjacentCountries.size());
-        for(Country c: this.adjacentCountries) {
-            System.out.println(c.getName());
+        if (this.selected) {
+            this.deselect();
+        } else {
+            if (this.game.getSelectedCountry() != null) {
+                // Attacks and troop movements
+                if (this.owner.equals(this.game.getCurrentPlayer())) {
+                    System.out.println("troop movement");
+                } else {
+                    System.out.println("Attack move");
+                }
+            } else {
+                if (this.owner.equals(this.game.getCurrentPlayer())) {
+                    selectThisCountry();
+                }
+            }
+        }
+    }
+
+    private void selectThisCountry() {
+        if (this.troops > 1) {
+            this.darken();
+            this.select();
+            for (Country c : this.adjacentCountries) {
+                c.brighten();
+            }
         }
     }
 
     public void deselect() {
         this.selected = false;
+        this.resetHue();
+        this.game.removeSelectedCountry();
+        for (Country c : this.adjacentCountries) {
+            c.resetHue();
+        }
+        // DO THE COLOR THING
         if (this.owner != null) {
             this.view.setColor(this.owner.getColor());
         } else {
@@ -146,6 +173,18 @@ public class Country {
         return this.defaultColor;
     }
 
+    public void brighten() {
+        this.view.setColor(this.owner.getColor().brighter().brighter());
+    }
+
+    public void resetHue() {
+        this.view.setColor(this.owner.getColor());
+    }
+
+    public void darken() {
+        this.view.setColor(this.owner.getColor().darker());
+    }
+
     public void setView(CountryView cw) {
         this.view = cw;
     }
@@ -153,13 +192,13 @@ public class Country {
     public boolean isSelected() {
         return this.selected;
     }
-    
+
     public CountryView getCountryView() {
         return this.view;
     }
-    
+
     public Double[] getCoordinates() {
-        return new Double[] {this.layoutY, this.layoutX};
+        return new Double[]{this.layoutY, this.layoutX};
     }
 
 }
