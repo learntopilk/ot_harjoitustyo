@@ -169,7 +169,6 @@ public class Game {
         } else {
             this.currentPlayer = p1;
         }
-        
     }
 
     /**

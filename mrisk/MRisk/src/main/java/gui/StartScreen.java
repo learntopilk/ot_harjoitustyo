@@ -3,6 +3,8 @@ package gui;
 import game.Country;
 import game.Game;
 import game.Player;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.scene.image.Image;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -12,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -19,7 +22,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -85,7 +88,7 @@ public class StartScreen extends Application {
         game.start();
         update();
     }
-    
+
     private GridPane createStartScreenGrid() {
         GridPane grid = new GridPane();
         grid.setBackground(new Background(bg));
@@ -101,7 +104,6 @@ public class StartScreen extends Application {
 
     public void update() {
         this.playerInTurn = game.getCurrentPlayer().getName();
-        System.out.println(game.getCurrentPlayer().getName());
         this.updateTurnDisplay();
     }
 
@@ -113,7 +115,7 @@ public class StartScreen extends Application {
         returnBtn.setOnAction((ActionEvent event) -> {
             goToStartScreen();
         });
-        
+
         statGrid.setAlignment(Pos.CENTER);
         statGrid.add(returnBtn, 0, 0);
         Scene statScene = new Scene(statGrid, 900, 700);
@@ -127,26 +129,39 @@ public class StartScreen extends Application {
     }
 
     private void goToGameScreen() {
-        System.out.println("Starting game...");
         if (gameScene == null) {
             gameScene = createGameScene();
+            gameScene.setOnMouseReleased((MouseEvent mouseEvent) -> {
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        update();
+                    }
+                }, 250);
+            });
         }
         stage.setScene(gameScene);
     }
 
     /**
-     * Updates the turn display to indicate whose turn it is.
-     * NOT WORKING YET
+     * Updates the turn display to indicate whose turn it is. NOT WORKING YET
      */
     public void updateTurnDisplay() {
         phaseDisplay.setText(playerInTurn);
+        Player cur = this.game.getCurrentPlayer();
+        if (cur == null) {
+            phaseDisplay.setStyle("-fx-control-inner-background: #" + Color.GRAY.toString().substring(2));
+        } else {
+            phaseDisplay.setStyle("-fx-control-inner-background: #" + this.game.getCurrentPlayer().getColor().toString().substring(2));
+        }
         //phaseDisplay.setText(turnPhase);
     }
 
     private Scene createGameScene() {
         Pane pane = new Pane();
         pane.setBackground(new Background(bg));
-        
+
         Button menuBtn = menuButton();
         pane.getChildren().add(menuBtn);
 
@@ -170,7 +185,7 @@ public class StartScreen extends Application {
     }
 
     private void initializeCountries(Pane p) {
-        
+
         for (Country c : this.game.getCountries()) {
             Double[] coordinates = c.getCoordinates();
             CountryView cw = new CountryView(c, c.getImageURI(), this.game, coordinates[0], coordinates[1]);

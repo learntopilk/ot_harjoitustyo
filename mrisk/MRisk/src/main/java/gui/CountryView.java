@@ -71,6 +71,7 @@ public class CountryView {
                 + "-fx-text-fill: white;");
         troopNumberDisplay.setPrefWidth(80d);
         troopNumberDisplay.setPrefHeight(40d);
+        troopNumberDisplay.setMouseTransparent(true);
     }
 
     public Country getCountry() {
@@ -110,7 +111,6 @@ public class CountryView {
         lighting.setSurfaceScale(0.0);
         lighting.setLight(new Light.Distant(45, 45, this.color));
         this.i.setEffect(lighting);
-        //System.out.println("updating color of " + this.country.getName() + " to " + this.color.toString());
     }
 
     /**
