@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -148,14 +147,13 @@ public class StartScreen extends Application {
      * Updates the turn display to indicate whose turn it is. NOT WORKING YET
      */
     public void updateTurnDisplay() {
-        phaseDisplay.setText(playerInTurn);
+        phaseDisplay.setText(this.game.getPhase() + ": " + playerInTurn);
         Player cur = this.game.getCurrentPlayer();
         if (cur == null) {
             phaseDisplay.setStyle("-fx-control-inner-background: #" + Color.GRAY.toString().substring(2));
         } else {
             phaseDisplay.setStyle("-fx-control-inner-background: #" + this.game.getCurrentPlayer().getColor().toString().substring(2));
         }
-        //phaseDisplay.setText(turnPhase);
     }
 
     private Scene createGameScene() {
@@ -166,8 +164,11 @@ public class StartScreen extends Application {
         pane.getChildren().add(menuBtn);
 
         updateTurnDisplay();
-        phaseDisplay.setLayoutX(screenWidth);
+        phaseDisplay.setLayoutX(screenWidth - 100);
         phaseDisplay.setLayoutY(0);
+        phaseDisplay.setMinHeight(40d);
+        phaseDisplay.setMinWidth(300d);
+        phaseDisplay.setDisable(true);
         pane.getChildren().add(phaseDisplay);
 
         this.initializeCountries(pane);
