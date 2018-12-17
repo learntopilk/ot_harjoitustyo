@@ -6,12 +6,10 @@ import game.Game;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.net.URL;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import static javafx.scene.input.DataFormat.URL;
 
 /**
  *
@@ -44,7 +42,6 @@ public class CountryDAO {
     }
 
     private Country scrapeCountry(String rawData, Game g) {
-        System.out.println(rawData);
         String[] data = rawData.split(";");
         String name = data[0].replaceAll("%20", " ");
         Integer troopValue = Integer.parseInt(data[1]);
@@ -66,7 +63,6 @@ public class CountryDAO {
                 return c;
             }
         }
-        System.out.println(name + " not found");
         return null;
     }
 

@@ -3,7 +3,6 @@ package game;
 import gui.CountryView;
 import java.util.ArrayList;
 import java.util.Random;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 /**
@@ -152,26 +151,23 @@ public class Country {
     public void receiveAttack () {
         Country c = game.getSelectedCountry();
         Random r = new Random();
-        int attackerValue = r.nextInt(100)+1;
-        int defenderValue = r.nextInt(100)+1;
-        if (attackerValue > defenderValue) {
+        if ((r.nextInt(100)+1) > (r.nextInt(100)+1)) {
             this.reduceTroopsByOne();
             if (this.troops == 0) {
+                java.awt.Toolkit.getDefaultToolkit().beep();
                 this.setOwner(this.game.getCurrentPlayer());
-                c.reduceTroopsByOne();
                 this.troops = 1;
-                this.view.updateTroopDisplay();
+                c.reduceTroopsByOne();
                 c.deselect();
             }
         } else {
             c.reduceTroopsByOne();
-            this.view.updateTroopDisplay();
             game.getCurrentPlayer().removeOneTroop();
             if (c.getTroops() == 1) {
                 c.deselect();
             }
         }
-        
+        this.view.updateTroopDisplay();
     }
     
     private void moveTroops() {
@@ -201,11 +197,10 @@ public class Country {
         for (Country c : this.adjacentCountries) {
             c.resetHue();
         }
-        // DO THE COLOR THING
         if (this.owner != null) {
             this.view.setColor(this.owner.getColor());
         } else {
-            this.view.setColor(Color.BLUE);
+            this.view.setColor(Color.GRAY);
         }
     }
 

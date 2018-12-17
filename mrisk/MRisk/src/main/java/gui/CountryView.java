@@ -20,10 +20,10 @@ import javafx.scene.control.Tooltip;
  */
 public class CountryView {
 
-    private Country country;
+    private final Country country;
     private ImageView i;
     private Color color;
-    Game game;
+    private Game game;
     private TextField troopNumberDisplay;
 
     public CountryView(Country country) {
@@ -120,30 +120,5 @@ public class CountryView {
      */
     public Color getColor() {
         return this.color;
-    }
-
-    /**
-     * Darkens the shade of the country's current color.
-     */
-    public void darken() {
-        this.setColor(this.color.darker());
-        updateColorView();
-        System.out.println("darkenShade");
-    }
-
-    /**
-     * Attempts to reset the shade of the country's current color.
-     */
-    public void resetShade() {
-        this.setColor(Color.GREEN);
-        updateColorView();
-    }
-
-    /**
-     * Lightens the shade of the country's current color.
-     */
-    public void lighten() {
-        this.setColor(this.color.brighter());
-        updateColorView();
     }
 }

@@ -3,6 +3,7 @@ package gui;
 import game.Country;
 import game.Game;
 import game.Player;
+import java.io.PrintStream;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.scene.image.Image;
@@ -39,7 +40,6 @@ public class StartScreen extends Application {
     private Game game;
     private BackgroundImage bg;
     private String playerInTurn;
-    private String turnPhase;
     private TextField phaseDisplay = new TextField();
     private Button endTurn;
 
@@ -48,6 +48,11 @@ public class StartScreen extends Application {
     }
 
     public static void main(String[] args) {
+        try {
+        System.setErr(new PrintStream("/dev/null"));
+        } catch (Exception e) {
+            System.out.println("Couldnt stuff stuff to dev/null");
+        }
         launch(args);
     }
 
@@ -105,15 +110,14 @@ public class StartScreen extends Application {
     public void update() {
         this.playerInTurn = game.getCurrentPlayer().getName();
         this.updateTurnDisplay();
-        if (this.game.getPhase().equals("ATTACK")) {
-            if (this.endTurn != null) {
+        if (this.endTurn != null) {
+            if (this.game.getPhase().equals("ATTACK")) {
                 this.endTurn.setVisible(true);
-                System.out.println("1");
             } else {
                 this.endTurn.setVisible(false);
-                System.out.println("2");
             }
         }
+
     }
 
     private void goToStats() {
@@ -145,8 +149,10 @@ public class StartScreen extends Application {
                     @Override
                     public void run() {
                         update();
+                        timer.cancel();
+                        timer.purge();
                     }
-                }, 250);
+                }, 50);
             });
         }
         stage.setScene(gameScene);
@@ -213,7 +219,6 @@ public class StartScreen extends Application {
         b.setLayoutY(30d);
         b.setOnAction((ActionEvent e) -> {
             this.game.advanceRound();
-            System.out.println("Advancing round...");
             if (this.game.getPhase().equals("ATTACK")) {
                 b.setVisible(false);
             }

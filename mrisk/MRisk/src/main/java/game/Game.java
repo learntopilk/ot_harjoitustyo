@@ -54,7 +54,6 @@ public class Game {
     }
 
     public void initializeCountries() {
-        System.out.println("INITIALIZING");
         this.countries = countrySystem.readCountries();
     }
 
