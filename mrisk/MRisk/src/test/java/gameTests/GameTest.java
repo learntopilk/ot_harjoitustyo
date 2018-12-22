@@ -20,14 +20,12 @@ import java.util.*;
  */
 public class GameTest {
     Game g;
-    FakeCountryDAO f;
     StartScreen fss;
     @Before
     public void setUp() {
         g = new Game();
         fss = new StartScreen("");
         g.attachView(fss);
-        f = new FakeCountryDAO();
     }
     
     @Test
