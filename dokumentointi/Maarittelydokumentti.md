@@ -28,7 +28,7 @@ Contains instructions for playing the game, as well as a button for returning to
 #### Game View
 ![gameview.png](gameview.png)
 
-Displays the game map in the middle, with colored countries representing ownership by payers. The left side of the screen contains, in the following order:
+Displays the game map in the middle, with colored countries representing ownership by players. The left side of the screen contains, in the following order:
 
 - `Back to main menu`
 - `End Turn` (Visible only during attack phase)
@@ -41,13 +41,14 @@ Displays the game map in the middle, with colored countries representing ownersh
 - Two human players can match against each other
     - The players can pick which states they want to start with.
 - The map is represented by a CSV, which can be changed relatively easily (provided appropriate images are provided)
-- The players get troops according to the states they control at the start of eac turn
+- The players get troops according to the states they control at the start of each turn
 - In the attack phase, players can either attack enemy states or move their troops to another country they own
 - Each country/state must always have at least one troop stationed. If there is only one troop, no attacks can be made starting with that state.
 - The players can read basic instructions on how to play the game
 
 ### Known issues:
 - The "end game" button only shows up after the first click on each turn
+- Players are able to move troops to whichever state that they own; this is not on accordance with Risk rules.
 
 ### Ideas for expanding and improving
 - A text field for specifying the file from which the map is loaded
@@ -55,3 +56,4 @@ Displays the game map in the middle, with colored countries representing ownersh
 - Dynamic player creation, allowing anywhere from 2-4 players
 - Nicknames for players
 - Saving game states
+- Sound effects.

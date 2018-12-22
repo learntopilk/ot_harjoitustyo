@@ -2,6 +2,7 @@
 
 MRisk is a minimal implementation of the classic board game Risk. As a minimal requirement, the game will allow two human players to play a full game of Risk against each other in the Southeastern United States.
 
+> NB! In case you start wondering about it, the game plays a "beep" every time a state is conquered. This is an intended feature. Do not be alarmed.
 
 ## Recent development
 
@@ -18,7 +19,7 @@ Check out my latest release [here](https://github.com/learntopilk/ot_harjoitusty
 
 [Instructions](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Kayttoohje.md)
 
-[Project requirements](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) (In Finnish)
+[Project requirements](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md) 
 
 [Project architecture](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md) (i.e. arkkitehtuuri.md)
 

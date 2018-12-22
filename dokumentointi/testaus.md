@@ -23,4 +23,4 @@ There are no special procedures to installing the app. Just download and run it.
 Most of the application works fine. It has the following flaws:
 
 1. Players can move units to whichever state/country they want to. In a real Risk game, each unit may only move once per turn.
-2. 
+2. The "End turn" button disappears at the start of each turn, and only appears after the player whose turn it is clicks somewhere on the map. This is not serious, but it is annoying.
