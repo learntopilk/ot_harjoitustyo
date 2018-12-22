@@ -37,57 +37,119 @@ public class Country {
         this.adjacentCountries = new ArrayList<>();
     }
 
+    /**
+     * Returns the name of the country.
+     *
+     * @return Name of the country.
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Sets the URI of the image used for the country view.
+     *
+     * @param uri
+     */
     public void setImageURI(String uri) {
         this.imageURI = uri;
     }
 
+    /**
+     * Returns the URI of the image representing the country.
+     *
+     * @return
+     */
     public String getImageURI() {
         return this.imageURI;
     }
 
+    /**
+     * Sets the owner of the country.
+     *
+     * @param newOwner
+     */
     public void setOwner(Player newOwner) {
         this.owner = newOwner;
     }
 
+    /**
+     * Returns the Player who controls the country.
+     */
     public Player getOwner() {
         return this.owner;
     }
 
+    /**
+     * Returns false if the country does not currently have an owner.
+     *
+     * @return Whether the country has an owner or not.
+     */
     public boolean hasOwner() {
         return this.owner != null;
     }
 
+    /**
+     * Sets the troops present in the country.
+     *
+     * @param number The number of troops to set in the country.
+     */
     public void setTroops(int number) {
         this.troops = number;
     }
 
+    /**
+     * Returns the number of troops currently in the country.
+     *
+     * @return Number of troops in the country
+     */
     public int getTroops() {
         return this.troops;
     }
 
+    /**
+     * Returns the country's troop value, i.e. how many troops the country
+     * brings to the owner during deployment.
+     *
+     * @return Number of troops the owner receives during deployment for owning
+     * this country.
+     */
     public int getTroopValue() {
         return this.value;
     }
 
+    /**
+     * Sets the current country as the selected country.
+     */
     public void select() {
         this.selected = true;
         this.game.selectCountry(this);
     }
 
+    /**
+     * Reduces the number of troops in the country by one. Returns false of the
+     * number falls to zero.
+     *
+     * @return Whether troops remain in the country.
+     */
     public boolean reduceTroopsByOne() {
         this.troops--;
         this.view.updateTroopDisplay();
         return this.troops > 1;
     }
 
+    /**
+     * Adds a country to this country's list of adjacent countries.
+     *
+     * @param c Neighboring country
+     */
     public void addNeighbor(Country c) {
         this.adjacentCountries.add(c);
     }
 
+    /**
+     * Sorts click events to this country according to game phase.
+     */
     public void handleClickEvent() {
         switch (game.getPhase()) {
             case "COUNTRYSELECTION":
@@ -104,6 +166,9 @@ public class Country {
         }
     }
 
+    /**
+     * Handles a selection phase click.
+     */
     public void handleSelectionPhaseClick() {
         if (!this.hasOwner()) {
             this.view.setColor(game.currentPlayer.getColor());
@@ -120,6 +185,9 @@ public class Country {
         }
     }
 
+    /**
+     * Handles a deployment phase click.
+     */
     public void handleDeploymentPhaseClick() {
         if (this.owner.equals(game.getCurrentPlayer())) {
             this.owner.removeOneTroop();
@@ -129,7 +197,11 @@ public class Country {
             this.game.nextDeploymentTurn();
         }
     }
-
+    
+    /**
+     * Handles an attack phase click.
+     * @param type Not in use. Supply an empty string.
+     */
     public void handleAttackPhaseClick(String type) {
         if (this.selected) {
             this.deselect();
@@ -148,6 +220,9 @@ public class Country {
         }
     }
 
+    /**
+     * Handles an attack towards this country.
+     */
     public void receiveAttack() {
         Country c = game.getSelectedCountry();
         Random r = new Random();
@@ -197,6 +272,9 @@ public class Country {
         }
     }
 
+    /**
+     * Deselects this country as the current country.
+     */
     public void deselect() {
         this.selected = false;
         this.resetHue();
@@ -211,34 +289,64 @@ public class Country {
         }
     }
 
+    /**
+     * Returns the default color of countries.
+     * @return The default color.
+     */
     public Color getDefaultColor() {
         return this.defaultColor;
     }
 
+    /**
+     * Sets a lighter color for the country display.
+     */
     public void brighten() {
         this.view.setColor(this.owner.getColor().brighter().brighter());
     }
 
+    /**
+     * Sets the country display color to the original owner player's color.
+     */
     public void resetHue() {
         this.view.setColor(this.owner.getColor());
     }
 
+    /**
+     * Sets a darker shade for this country's view.
+     */
     public void darken() {
         this.view.setColor(this.owner.getColor().darker());
     }
 
+    /**
+     * Attaches a CountryView to this country.
+     * @param cw CountryView to attack to this country.
+     */
     public void setView(CountryView cw) {
         this.view = cw;
     }
 
+    /**
+     * Returns information on whether the country is selected.
+     * @return Whether the country is the current selected country.
+     */
     public boolean isSelected() {
         return this.selected;
     }
 
+    /**
+     * Returns the CountryView associated to this country.
+     * @return The CountryView object representing this country.
+     */
     public CountryView getCountryView() {
         return this.view;
     }
 
+    /**
+     * Retrieves the X and Y layout values for this country (as they are information that
+     * is currently attached to the country, not the view.
+     * @return The layoutX and layoutY values for a country's view.
+     */
     public Double[] getCoordinates() {
         return new Double[]{this.layoutY, this.layoutX};
     }

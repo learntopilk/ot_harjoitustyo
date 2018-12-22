@@ -20,10 +20,18 @@ public class Connection {
         this.end = end;
     }
     
+    /**
+     * The country from which this connection starts
+     * @return Country at the beginning of the connection
+     */
     public Country getStart() {
         return this.start;
     }
     
+    /**
+     * 
+     * @return name of the country this connections ends with.
+     */
     public String getEnd() {
         return this.end;
     }

@@ -54,10 +54,16 @@ public class Game {
         this.startCountrySelection();
     }
 
+    /**
+     * Initializes the countries from a CSV file.
+     */
     public void initializeCountries() {
         this.countries = countrySystem.readCountries();
     }
-
+    /**
+     * Attaches a StartScreen object to the Game.
+     * @param s StartScreen to attach.
+     */
     public void attachView(StartScreen s) {
         this.ss = s;
     }
@@ -74,6 +80,9 @@ public class Game {
         this.ss.pd.setTurn(currentPlayer.getColor());
     }
 
+    /**
+     * Updates the phase display after changes.
+     */
     public void updatePhaseDisplay() {
         this.ss.updatePhaseDisplay(this.phase);
 
@@ -100,6 +109,11 @@ public class Game {
 
     }
 
+    /**
+     * Finds and returns a country by name.
+     * @param name name of the country to find
+     * @return The country by that name. Null if not found.
+     */
     public Country getCountryByName(String name) {
         for (Country c : countries) {
             if (c.getName().equals(name)) {
@@ -200,6 +214,9 @@ public class Game {
         this.ss.pd.setTurn(currentPlayer.getColor());
     }
 
+    /**
+     * Updates troop displays. For use after troop value changes.
+     */
     public void updateTroopDisplays() {
         this.ss.pd.updatePlayer1TroopsToSet(p1.getTroopsToSet());
         this.ss.pd.updatePlayer2TroopsToSet(p2.getTroopsToSet());
@@ -265,6 +282,10 @@ public class Game {
         return this.selectedCountry;
     }
 
+    /**
+     * Sets the specified country as the selected country.
+     * @param c The country to select
+     */
     public void selectCountry(Country c) {
         this.selectedCountry = c;
     }
@@ -278,6 +299,9 @@ public class Game {
         this.selectedCountry = null;
     }
 
+    /**
+     * Removes any country from being selected.
+     */
     public void removeSelectedCountry() {
         this.selectedCountry = null;
     }
@@ -300,6 +324,10 @@ public class Game {
         return this.phase;
     }
 
+    /**
+     * Investigates whether there are more than one player in the game.
+     * @return True of more than one player owns countries.
+     */
     public boolean moreThanOnePlayerLeft() {
         int player1 = 0;
         int player2 = 0;
@@ -314,6 +342,10 @@ public class Game {
         return (player1 > 0 && player2 > 0);
     }
 
+    /**
+     * Sets the game state as GAME OVER. The game ends.
+     * @param winner The player who has won.
+     */
     public void endGame(Player winner) {
         // END THE GAME
         this.phase = "GAME OVER";

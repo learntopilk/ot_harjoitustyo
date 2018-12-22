@@ -75,18 +75,32 @@ public class CountryView {
         troopNumberDisplay.setMouseTransparent(true);
     }
 
+    /**
+     * 
+     * @return The country this CountryView represents
+     */
     public Country getCountry() {
         return this.country;
     }
 
+    /**
+     * @return The ImageView containing the image representing this view.
+     */
     public ImageView getImageView() {
         return this.i;
     }
 
+    /**
+     * Updates the troop display for this view.
+     */
     public void updateTroopDisplay() {
         troopNumberDisplay.setText(Integer.toString(this.country.getTroops()));
     }
 
+    /**
+     * 
+     * @return The troop number display attached to this country.
+     */
     public TextField getTextDisplay() {
         return this.troopNumberDisplay;
     }
@@ -104,6 +118,9 @@ public class CountryView {
         this.updateColorView();
     }
 
+    /**
+     * Updates the color for this view.
+     */
     private void updateColorView() {
         Lighting lighting = new Lighting();
         lighting.setDiffuseConstant(1.0);

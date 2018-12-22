@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
+ * A helper class which fetches country data from a CSV and parses the countries,
+ * their view data, image URI, values and connections.
  * @author joonas
  */
 public class CountryDAO {
@@ -27,6 +28,10 @@ public class CountryDAO {
         this.game = g;
     }
 
+    /**
+     * Reads and parses the countries from a CSV, returning the countries as a list with their connections.
+     * @return A list of countries resulting from the parsing.
+     */
     public List readCountries() {
         List<Country> countries = new ArrayList<>();
         try {

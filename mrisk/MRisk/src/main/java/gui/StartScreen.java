@@ -106,6 +106,9 @@ public class StartScreen extends Application {
         stage.setScene(start);
     }
 
+    /**
+     * Updates the visibility status of the "end turn" button, necessary for ending attack turns.
+     */
     public void update() {
         if (this.endTurn != null) {
             if (this.game.getPhase().equals("ATTACK")) {
@@ -149,7 +152,9 @@ public class StartScreen extends Application {
                 + "\n and those around it will be highlighted. You can attack one of these countries, or move troops to"
                 + "\n one of your countries."
                 + "\n End your attack turn by clicking \"End turn\". (If you do not see the button, click somewhere on the "
-                + "\n screen.)");
+                + "\n screen.)"
+                + "\n \n"
+                + "To start a new game, you need to restart the application.");
         
         statGrid.add(t, 0, 0);
         Scene statScene = new Scene(statGrid, 900, 700);
@@ -223,6 +228,10 @@ public class StartScreen extends Application {
         return b;
     }
 
+    /**
+     * Updates the phase display to help players know what the hell is going on.
+     * @param phase A string value designating the current game phase.
+     */
     public void updatePhaseDisplay(String phase) {
         this.pd.updatePhase(phase);
     }
