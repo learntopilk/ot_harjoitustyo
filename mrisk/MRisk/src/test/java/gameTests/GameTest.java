@@ -3,16 +3,11 @@ package gameTests;
 
 import game.Country;
 import game.Game;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import game.Player;
 import gui.StartScreen;
 import javafx.scene.paint.Color;
-import java.util.*;
 
 /**
  *
