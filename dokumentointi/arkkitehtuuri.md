@@ -1,12 +1,13 @@
 # MRisk architecture
 
-MRisk is a Java-based Risk clone, made with JavaFX. It attempts to work with a layered architecture, as demonstrated below (Note that the section drawn with a dashed line has not been implemented):
+MRisk is a Java-based Risk clone, made with JavaFX. It attempts to work with a layered architecture, as demonstrated below:
 
-![Architectural drawing](Arch.jpg)
+TODO NEW IMAGE
+![Architectural drawing](Archie.jpg)
 
 ## User Interface
 
-The UI is built with JavaFX. Currently, there are three views:
+The UI is built with JavaFX. There are three views:
 
 1. Start screen
 2. Game Screen
