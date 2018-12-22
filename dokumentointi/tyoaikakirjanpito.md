@@ -12,4 +12,5 @@
 | 14.12.2018 | 2h | Osavaltiot lisätty. Valmisteltu osavaltioiden säilyttämistä ulkopuolisessa tiedostossa. |
 | 15.12.2018 | 2h | Osavaltiot luetaan nyt tiedostosta `countries.csv`. Country-olioihin lisätään nyt tieto naapureista. |
 | 18.12.2018 | 4h | Häksäsin vuoronäyttöön värinvaihdon sekä pelivaiheen osoituksen. Nyt hyökkäysvaiheessa ensimmäinen pelaaja voi valita osavaltion, jossa on enemmän kuin 1 solttu. Itse asiassa lisäsin myös hyökkäys- ja joukkojensiirto-ominaisuudet. Jotain ongelmia tuolla vielä on, korjaillaan ennen palautusta. |
-| __Yht__ | 32h |  |
+| 22.12.2018 | 7h | Uudet vuoro- ja vaihenäytöt. Paranteluja dokumentaatioon. Purkkapäissäni tuhosin testauskyvykkyyden. Lisätty peliohjeet appikseen. Nyt peli kuitenkin toimii alusta loppuun. |
+| __Yht__ | 42h |  |
