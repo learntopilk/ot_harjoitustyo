@@ -63,9 +63,6 @@ public class StartScreen extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //Image imgur = new Image(getClass().getClassLoader().getResource("f1.png").getFile());
-        //bg = new BackgroundImage(new Image("/f1.png", screenHeight, screenWidth, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        //String URI = getClass().getClassLoader().getClass().getResource("./f1.png").getPath();
         bg = new BackgroundImage(new Image("resources/f1.png", 
                 screenHeight, screenWidth, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
