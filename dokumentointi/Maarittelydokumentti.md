@@ -1,71 +1,57 @@
-# Vaatimusmäärittely: Misk
+# Project requirements and definitions: MRisk
 
-..eli Mini-Risk.
+..i.e. Mini-Risk.
 
-### Sovelluksen tarkoitus
+### Purpose
 
-Misk on Risk-klooni. Pelaajat hyökkäävät toisiaan vastaan vallatakseen alueita. Pelaajat saavat joukkoja kunkin vuoron alussa hallussa pitämiensä alueiden arvon mukaisesti. Peli loppuun kun jäljellä on yksi pelaaja.
+MRisk is a Risk clone. Two players fight each other for control of the Southeastern United States. At the beginning of each turn, the players receive a number of units to deploy, depending on how many and which states they currently control
 
-Pelaaja voi hyökätä mistä tahansa omistamastaan ruudusta sen viereiseen ruutuun.
+The game ends when only one player remains.
 
-Pelaajan täytyy pitää jokaisessa omistamassaan ruudussa vähintään yhtä yksikköä.
 
-### Käyttäjät
+### Users
 
-Perussovellukseen ei tule nimimerkkiä monimutkaisempaa käyttäjätoimintoa. 
+Only one user role exists: That of a unnamed player, represented by a color.
 
-### Sovelluksen minimimuoto:
+### Views
 
-- Kaksi ihmispelaajaa pelaavat toisiaan vastaan
-    - Pelaajat voivat asettaa nimimerkin
-    - Pelaajat voivat valita puolensa värin
-    - Pelaajat voivat valita aloitusalueensa
-- Karttavaihtoehtoja on kaksi
-- Peli pitää tilastoja käytetyistä vuoroista, menetetyistä yksiköistä ja voittajista
-- Tilastot pitävät kirjaa 10 viimeisimmästä pelistä
-- Pelin voi tallentaa ja ladata sitä jatkaakseen
+The application has three views.
 
-### Pelin laajempi muoto (eli stretch goalit, jos aikaa riittää, prioriteettijärjestyksessa)
+#### Main menu
 
-1. Ihmispelaajia voi olla 2-4 (tai miksei useampiakin)
-2. Tallennettuja pelejä voi olla useita
-3. Tilastoja tallennetaan esim. tietokantaan, josta niitä voidaan suodattaa esim. menetettyjen yksiköiden määrän mukaan
-4. Ääniefektit ja taustamusiikki
-5. Tietokone pelaa jonkintasoisella tekoälyllä
+Contains buttons for starting the game, reading instructions, and exiting the game.
 
-### Näkymät
+#### Instruction view
 
-Sovelluksessa on kolme päänäkymää
-#### Aloitusruutu
+Contains instructions for playing the game, as well as a button for returning to main menu.
 
-Aloitusruudussa on pähee logo.
-Aloitusruudun vasemmalla puoliskolla on:
+#### Game View
+![gameview.png](gameview.png)
 
-- Start Game-painike
-- Stats-painike, joka vie tilastoihin
-- Quit -painike pelin sammuttamista varten.
+Displays the game map in the middle, with colored countries representing ownership by payers. The left side of the screen contains, in the following order:
 
-Aloitusruudun oikealla puolella on
-- select-boxit pelaajamäärälle,
-- tekstikentät pelaajien nimimerkeille
-- Pelaajien värin valinta.
+- `Back to main menu`
+- `End Turn` (Visible only during attack phase)
+- A text field describing game phase
+- two fields showing the number of troops each player can deploy
+- A field displaying the color of the player whose turn it currently is.
 
-Start game -painike aktivoituu, kun vähintään kahdella pelaajalla on nimi ja väri.
+### Minimum requirements:
 
-#### Peliruutu 
+- Two human players can match against each other
+    - The players can pick which states they want to start with.
+- The map is represented by a CSV, which can be changed relatively easily (provided appropriate images are provided)
+- The players get troops according to the states they control at the start of eac turn
+- In the attack phase, players can either attack enemy states or move their troops to another country they own
+- Each country/state must always have at least one troop stationed. If there is only one troop, no attacks can be made starting with that state.
+- The players can read basic instructions on how to play the game
 
-- Pelikenttä, jossa kartta
-- kartalla alueita, jotka voi valita yhden kerrallaan joukkojen siirtoa varten
-- Yhden ruudun ollessa valittuna korostuvat sen vieressä olevat ruudut (eli ruudut, joihin on mahdollista liikuttaa joukkoja)
-- Oikealla yläkulmassa painike "Save game"
-- Oikealla alakulmassa "Save and Quit", joka vie alkumenuun tallennettuaan pelin
+### Known issues:
+- The "end game" button only shows up after the first click on each turn
 
-#### Tilastoruutu
-
-- Pelattujen pelien kokonaismäärä.
-- Lista 10 viimeisimmistä peleistä: 
-    - Pelaajien nimet
-    - Pelaajien menettämät yksiköt
-    - Voittaja
-    - Vuorojen määrä.
-- Vasemmassa yläkulmassa painike "Back to menu"
+### Ideas for expanding and improving
+- A text field for specifying the file from which the map is loaded
+- A larger default map, accommodating up to 4 players
+- Dynamic player creation, allowing anywhere from 2-4 players
+- Nicknames for players
+- Saving game states

@@ -1,6 +1,6 @@
 package game;
 
-import DAO.CountryDAO;
+import daos.CountryDAO;
 import gui.StartScreen;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -161,7 +161,6 @@ public class Game {
      */
     public void startCountrySelection() {
         phase = "COUNTRYSELECTION";
-        //this.updatePhaseDisplay();
 
         countriesLeftToSelect = this.countries.size();
         currentPlayer = p1;
@@ -350,7 +349,6 @@ public class Game {
      * @param winner The player who has won.
      */
     public void endGame(Player winner) {
-        // END THE GAME
         this.phase = "GAME OVER";
         this.updatePhaseDisplay();
         System.out.println("The winner is " + winner.getName() + "!");

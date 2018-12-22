@@ -55,7 +55,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>gui/</exclude>
+                        <exclude>*gui/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

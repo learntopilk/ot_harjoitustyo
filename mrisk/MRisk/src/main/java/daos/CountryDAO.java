@@ -1,4 +1,4 @@
-package DAO;
+package daos;
 
 import game.Connection;
 import game.Country;

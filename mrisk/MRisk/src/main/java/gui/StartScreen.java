@@ -52,7 +52,7 @@ public class StartScreen extends Application {
         try {
             System.setErr(new PrintStream("/dev/null"));
         } catch (Exception e) {
-            //
+            
         }
         launch(args);
     }

@@ -33,15 +33,15 @@ public class Country {
      * @param Yoffset layoutY value for the countryView that will represent the country
      * @param Xoffset layoutX value for the countriView that will represent the country
      */
-    public Country(String name, int value, int index, Game game, double Yoffset, double Xoffset) {
+    public Country(String name, int value, int index, Game game, double offsetY, double offsetX) {
         this.name = name;
         this.defaultColor = Color.BEIGE;
         this.value = value;
         this.selected = false;
         this.game = game;
         this.troops = 0;
-        this.layoutY = Yoffset;
-        this.layoutX = Xoffset;
+        this.layoutY = offsetY;
+        this.layoutX = offsetX;
         this.game.addCountry(this);
         this.adjacentCountries = new ArrayList<>();
     }
@@ -263,9 +263,7 @@ public class Country {
 
     private void moveTroops() {
         this.troops++;
-        if (game.getSelectedCountry().reduceTroopsByOne()) {
-
-        } else {
+        if (!game.getSelectedCountry().reduceTroopsByOne()) {
             game.getSelectedCountry().deselect();
         }
         this.view.updateTroopDisplay();

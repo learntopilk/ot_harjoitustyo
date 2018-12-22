@@ -103,7 +103,7 @@ public class PlayerDisplay {
      * Sets the color of the turn display to correspond to that of the current player.
      * @param c Color of the current player
      */
-    public void setTurn( Color c) {
+    public void setTurn(Color c) {
         this.turnDisplay.setStyle("-fx-control-inner-background: #" + c.toString().substring(2));
     }
 
