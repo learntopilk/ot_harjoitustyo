@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -71,7 +72,7 @@ public class StartScreen extends Application {
             quit();
         });
 
-        Button seeStats = new Button("Stats");
+        Button seeStats = new Button("How to Play");
         seeStats.setOnAction((ActionEvent event) -> {
             goToStats();
         });
@@ -126,7 +127,31 @@ public class StartScreen extends Application {
         });
 
         statGrid.setAlignment(Pos.CENTER);
-        statGrid.add(returnBtn, 0, 0);
+        statGrid.add(returnBtn, 0, 1);
+        
+        TextArea t = new TextArea();
+        t.setEditable(false);
+        t.setMouseTransparent(true);
+        t.setMinHeight(600d);
+        t.setMinWidth(700d);
+        t.setText("MRisk is a Risk clone. "
+                + "\n \nThe game has three phases: "
+                + "\n 1. Country selection"
+                + "\n Players pick countries. Green begins."
+                + "\n\n"
+                + "\n 2. Troop deployment:"
+                + "\n The number of troops each player has to deploy is calculated based on the states each player owns. "
+                + "\n Green player starts deployment. The displays on the right side of the window"
+                + " show how many \n troops each player must deploy."
+                + "\n\n"
+                + "\n 3. Attack phase."
+                + "\n Players attack each other. Purple begins. Click on a country that has more than one troop, "
+                + "\n and those around it will be highlighted. You can attack one of these countries, or move troops to"
+                + "\n one of your countries."
+                + "\n End your attack turn by clicking \"End turn\". (If you do not see the button, click somewhere on the "
+                + "\n screen.)");
+        
+        statGrid.add(t, 0, 0);
         Scene statScene = new Scene(statGrid, 900, 700);
         stage.setScene(statScene);
     }
