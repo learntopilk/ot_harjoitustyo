@@ -45,6 +45,7 @@ Displays the game map in the middle, with colored countries representing ownersh
 - In the attack phase, players can either attack enemy states or move their troops to another country they own
 - Each country/state must always have at least one troop stationed. If there is only one troop, no attacks can be made starting with that state.
 - The players can read basic instructions on how to play the game
+- A Tooltip shows the troop value of each state (Clumsy, but works).
 
 ### Known issues:
 - The "end game" button only shows up after the first click on each turn

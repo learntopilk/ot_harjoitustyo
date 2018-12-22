@@ -4,6 +4,8 @@ MRisk is a minimal implementation of the classic board game Risk. As a minimal r
 
 > NB! In case you start wondering about it, the game plays a "beep" every time a state is conquered. This is an intended feature. Do not be alarmed.
 
+> Check it out: the game has tooltips. Hover your mouse over a state and see its troop value! It's clumsy but it works, but as it might go unnoticed, I wanted to give it some attention here.
+
 ## Recent development
 
 At the moment, the game has two players, four states, and players may pick states. Players may attack each other, conquer states, and move their troops around the map (a bit too liberally, but no time to fix it now).
