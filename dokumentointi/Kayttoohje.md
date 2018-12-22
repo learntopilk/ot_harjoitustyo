@@ -1,6 +1,6 @@
 # Instructions
 
-Download the file [MRisk_1.0.jar](https://github.com/learntopilk/ot_harjoitustyo/releases/download/1.3/MRisk-1.0-SNAPSHOT.jar)
+Download the file [MRisk_1.3.jar](https://github.com/learntopilk/ot_harjoitustyo/releases/download/1.3/MRisk-1.3.jar )
 
 ### Configuring the environment
 
@@ -11,7 +11,7 @@ No configurations should be needed (that I know of).
 Basically just cd into the directory where the jar is located, and punch in the following spell:
 
 ```
-java -jar MRisk_1.0.jar
+java -jar MRisk_1.3.jar
 ```
 
 This is what you will see:
