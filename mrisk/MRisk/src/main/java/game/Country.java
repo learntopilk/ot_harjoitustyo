@@ -77,7 +77,7 @@ public class Country {
         this.selected = true;
         this.game.selectCountry(this);
     }
-    
+
     public boolean reduceTroopsByOne() {
         this.troops--;
         this.view.updateTroopDisplay();
@@ -147,18 +147,17 @@ public class Country {
             }
         }
     }
-    
-    public void receiveAttack () {
+
+    public void receiveAttack() {
         Country c = game.getSelectedCountry();
         Random r = new Random();
-        if ((r.nextInt(100)+1) > (r.nextInt(100)+1)) {
+        if ((r.nextInt(100) + 1) > (r.nextInt(100) + 1)) { // Rolling a die
             this.reduceTroopsByOne();
             if (this.troops == 0) {
-                java.awt.Toolkit.getDefaultToolkit().beep();
-                this.setOwner(this.game.getCurrentPlayer());
-                this.troops = 1;
-                c.reduceTroopsByOne();
-                c.deselect();
+                this.changeOwnership(c);
+                if (!this.game.moreThanOnePlayerLeft()) {
+                    this.game.endGame(this.getOwner());
+                }
             }
         } else {
             c.reduceTroopsByOne();
@@ -169,11 +168,19 @@ public class Country {
         }
         this.view.updateTroopDisplay();
     }
-    
+
+    private void changeOwnership(Country attacker) {
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        this.setOwner(this.game.getCurrentPlayer());
+        this.troops = 1;
+        attacker.reduceTroopsByOne();
+        attacker.deselect();
+    }
+
     private void moveTroops() {
         this.troops++;
         if (game.getSelectedCountry().reduceTroopsByOne()) {
-            
+
         } else {
             game.getSelectedCountry().deselect();
         }

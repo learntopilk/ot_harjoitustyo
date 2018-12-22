@@ -79,8 +79,11 @@ public class Player {
     /**
      * Reduces the number of troops in the troops to set pile by one.
      */
-    public void removeOneTroop() {
-        this.troopsToSet--;
+    public boolean removeOneTroop() {
+        if (this.troopsToSet > 0) {
+            this.troopsToSet--;
+        }
+        return this.troopsToSet > 0;
     }
     
     /**

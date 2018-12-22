@@ -41,15 +41,18 @@ public class StartScreen extends Application {
     private BackgroundImage bg;
     private String playerInTurn;
     private TextField phaseDisplay = new TextField();
+    public PlayerDisplay pd;
     private Button endTurn;
 
     public StartScreen() {
         game = new Game();
+        this.pd = new PlayerDisplay();
+        game.attachView(this);
     }
 
     public static void main(String[] args) {
         try {
-        System.setErr(new PrintStream("/dev/null"));
+            //System.setErr(new PrintStream("/dev/null"));
         } catch (Exception e) {
             System.out.println("Couldnt stuff stuff to dev/null");
         }
@@ -144,15 +147,15 @@ public class StartScreen extends Application {
         if (gameScene == null) {
             gameScene = createGameScene();
             gameScene.setOnMouseReleased((MouseEvent mouseEvent) -> {
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
+                //Timer timer = new Timer();
+                //timer.schedule(new TimerTask() {
+                 //   @Override
+                  //  public void run() {
                         update();
-                        timer.cancel();
-                        timer.purge();
-                    }
-                }, 50);
+                    //    timer.cancel();
+                     //   timer.purge();
+                    //}
+                //}, 50);
             });
         }
         stage.setScene(gameScene);
@@ -173,18 +176,24 @@ public class StartScreen extends Application {
 
     private Scene createGameScene() {
         Pane pane = new Pane();
+        this.pd = new PlayerDisplay();
+        pd.updatePhase(this.game.getPhase());
         pane.setBackground(new Background(bg));
 
         Button menuBtn = menuButton();
         pane.getChildren().add(menuBtn);
 
-        updateTurnDisplay();
-        phaseDisplay.setLayoutX(screenWidth - 100);
-        phaseDisplay.setLayoutY(0);
-        phaseDisplay.setMinHeight(40d);
-        phaseDisplay.setMinWidth(300d);
-        phaseDisplay.setDisable(true);
-        pane.getChildren().add(phaseDisplay);
+//        updateTurnDisplay();
+//        phaseDisplay.setLayoutX(screenWidth - 100);
+//        phaseDisplay.setLayoutY(0);
+//        phaseDisplay.setMinHeight(40d);
+//        phaseDisplay.setMinWidth(300d);
+//        phaseDisplay.setDisable(true);
+//        pane.getChildren().add(phaseDisplay);
+        
+        for (TextField t : pd.getAll()) {
+            pane.getChildren().add(t);
+        }
 
         this.endTurn = endTurnButton();
         pane.getChildren().add(endTurn);
@@ -224,5 +233,9 @@ public class StartScreen extends Application {
             }
         });
         return b;
+    }
+    
+    public void updatePhaseDisplay(String phase) {
+        this.pd.updatePhase(phase);
     }
 }

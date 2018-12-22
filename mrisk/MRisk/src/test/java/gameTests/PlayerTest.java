@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 public class PlayerTest {
 
     Player p;
-
+/*
     @Before
     public void setUp() {
         p = new Player();
@@ -58,5 +58,5 @@ public class PlayerTest {
     public void addingToTotalTroopPileGrowsToSetPile() {
         p.addTotalTroops(15);
         assertEquals(15, p.getTroopsToSet());
-    }
+    }*/
 }

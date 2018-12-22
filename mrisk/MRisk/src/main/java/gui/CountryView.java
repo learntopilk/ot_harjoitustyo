@@ -50,6 +50,7 @@ public class CountryView {
         
         countryView.setOnMouseClicked((MouseEvent e) -> {
             this.country.handleClickEvent();
+            this.game.updateTroopDisplays();
         });
         
         Tooltip t = new Tooltip(this.country.getName() + ". Value: " + this.country.getTroopValue());

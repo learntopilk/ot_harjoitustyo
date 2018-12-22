@@ -54,7 +54,9 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.0</version>
                 <configuration>
-                    <excludes>gui/</excludes>
+                    <excludes>
+                        <exclude>gui/</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>

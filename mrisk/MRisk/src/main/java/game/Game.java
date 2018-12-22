@@ -1,6 +1,7 @@
 package game;
 
 import DAO.CountryDAO;
+import gui.StartScreen;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,12 +21,13 @@ public class Game {
     private List<Country> countries;
     private List<Connection> connections;
     private Country selectedCountry;
-    private String endButtonText;
+    //private String endButtonText;
     private String phase;
     private int countriesLeftToSelect;
     private int troopsLeftToDeploy;
     private CountryDAO countrySystem;
     private int roundNumber;
+    private StartScreen ss;
 
     public static void main(String[] args) {
 
@@ -57,14 +59,25 @@ public class Game {
         this.countries = countrySystem.readCountries();
     }
 
+    public void attachView(StartScreen s) {
+        System.out.println("attached");
+        this.ss = s;
+    }
+
     /**
      * Begins the deployment phase. Can be called many times over a single game.
      * Also calculates the number of troops each player has to deploy.
      */
     public void startTroopDeployment() {
         phase = "DEPLOYMENT";
+        this.updatePhaseDisplay();
         this.calculateTroopsToDeploy();
         currentPlayer = p1;
+    }
+
+    public void updatePhaseDisplay() {
+        this.ss.updatePhaseDisplay(this.phase);
+
     }
 
     /**
@@ -83,6 +96,8 @@ public class Game {
 
     private void startAttackPhase() {
         phase = "ATTACK";
+        this.updatePhaseDisplay();
+
     }
 
     public Country getCountryByName(String name) {
@@ -129,9 +144,11 @@ public class Game {
      */
     public void startCountrySelection() {
         phase = "COUNTRYSELECTION";
+        this.updatePhaseDisplay();
+
         countriesLeftToSelect = this.countries.size();
         currentPlayer = p1;
-
+        this.ss.pd.updatePhase(this.getPhase());
     }
 
     /**
@@ -139,23 +156,28 @@ public class Game {
      * based on the values of the countries each player owns.
      */
     public void calculateTroopsToDeploy() {
+        this.troopsLeftToDeploy = 0;
+        while (p1.getTroopsToSet() > 0) {
+            p1.removeOneTroop();
+        }
+        while (p2.getTroopsToSet() > 0) {
+            p2.removeOneTroop();
+        }
         for (Country c : this.countries) {
             Player p = c.getOwner();
             p.addTroopsToSet(c.getTroopValue());
             this.troopsLeftToDeploy += c.getTroopValue();
         }
-
-        System.out.println("Player 1 has " + p1.getTroopsToSet() + " troops to deploy");
-        System.out.println("Player 2 has " + p2.getTroopsToSet() + " troops to deploy");
-        System.out.println("There area a total of " + this.troopsLeftToDeploy + " = " + (p1.getTroopsToSet() + p2.getTroopsToSet()) + " troops to deploy");
+        this.updateTroopDisplays();
+        //this.ss.pd.updatePlayer1TroopsToSet(p1.getTroopsToSet());
+        //this.ss.pd.updatePlayer2TroopsToSet(p2.getTroopsToSet());
     }
 
     /**
-     * INCOMPLETE A method that completes all actions required for ending a
-     * round.
+     * A method that completes all actions required for ending a round.
      */
     public void advanceRound() {
-        if (this.roundNumber == 0) { // later on, players.length;
+        if (this.roundNumber == 0) {
             this.cyclePlayer();
             this.roundNumber++;
         } else {
@@ -176,6 +198,11 @@ public class Game {
         } else {
             this.currentPlayer = p1;
         }
+    }
+
+    public void updateTroopDisplays() {
+        this.ss.pd.updatePlayer1TroopsToSet(p1.getTroopsToSet());
+        this.ss.pd.updatePlayer2TroopsToSet(p2.getTroopsToSet());
     }
 
     /**
@@ -271,5 +298,24 @@ public class Game {
      */
     public String getPhase() {
         return this.phase;
+    }
+
+    public boolean moreThanOnePlayerLeft() {
+        int player1 = 0;
+        int player2 = 0;
+        for (Country c : this.countries) {
+            if (c.getOwner() == this.p1) {
+                player1++;
+            }
+            if (c.getOwner() == this.p2) {
+                player2++;
+            }
+        }
+        return (player1 > 0 && player2 > 0);
+    }
+
+    public void endGame(Player winner) {
+        // END THE GAME
+        System.out.println("The winner is " + winner.getName() + "!");
     }
 }
