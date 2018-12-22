@@ -23,14 +23,14 @@ import javafx.scene.paint.Color;
 public class CountryTest {
     Country c;
     Game g;
-    /*
+    
     @Before
     public void setUp() {
         g = new Game();
         //c = new Country("florida", 2, 0, g);
         c.setView(new CountryView(c));
     }
-    
+    /*
     @Test
     public void nameIsSetCorrectly() {
         String name = c.getName();
@@ -79,7 +79,7 @@ public class CountryTest {
    
     @Test
     public void countryConstructorWithParametersSetsValuesRight() {
-        Country co = new Country("florida", 3, 2, new Game());
+        Country co = new Country("florida", 3, 2, new Game(), 100d, 100d);
         assertEquals(co.getName(), "florida");
         assertEquals(co.getTroopValue(), 3);
     }

@@ -244,16 +244,6 @@ public class Game {
     }
 
     /**
-     * Returns a country by index (its index number in the list of countries).
-     *
-     * @param index
-     * @return Country at the specified index
-     */
-    public Country getCountry(int index) {
-        return this.countries.get(index);
-    }
-
-    /**
      * Subtracts one from the number of countries that do not have an owner.
      *
      * @return true if countries remain after the operation, false if all
@@ -290,15 +280,6 @@ public class Game {
      */
     public void selectCountry(Country c) {
         this.selectedCountry = c;
-    }
-
-    /**
-     * Deselects the specified country.
-     *
-     * @param index Country to deselectd
-     */
-    public void deselectCountry(int index) {
-        this.selectedCountry = null;
     }
 
     /**
@@ -351,6 +332,5 @@ public class Game {
     public void endGame(Player winner) {
         this.phase = "GAME OVER";
         this.updatePhaseDisplay();
-        System.out.println("The winner is " + winner.getName() + "!");
     }
 }
