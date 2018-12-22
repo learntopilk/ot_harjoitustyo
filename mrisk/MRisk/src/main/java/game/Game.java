@@ -3,7 +3,6 @@ package game;
 import daos.CountryDAO;
 import gui.StartScreen;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javafx.scene.paint.Color;
 
@@ -43,7 +42,6 @@ public class Game {
         this.p2 = new Player(Color.PURPLE);
         this.currentPlayer = p1;
         this.phase = "COUNTRYSELECTION";
-        this.round = 1;
         this.troopsLeftToDeploy = 0;
         countrySystem = new CountryDAO(this);
         this.initializeCountries();
@@ -109,7 +107,6 @@ public class Game {
         phase = "ATTACK";
         this.updatePhaseDisplay();
         this.ss.pd.setTurn(currentPlayer.getColor());
-
     }
 
     /**

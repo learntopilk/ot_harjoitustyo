@@ -4,7 +4,6 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 

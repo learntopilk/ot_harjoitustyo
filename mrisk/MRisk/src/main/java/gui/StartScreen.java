@@ -47,6 +47,11 @@ public class StartScreen extends Application {
         this.pd = new PlayerDisplay();
         game.attachView(this);
     }
+    
+    
+    public StartScreen(String dummy) {
+        pd = new PlayerDisplay();
+    }
 
     public static void main(String[] args) {
         try {

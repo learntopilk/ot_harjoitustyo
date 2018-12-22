@@ -17,11 +17,11 @@ public class Country {
     private Integer troops;
     private CountryView view;
     private boolean selected;
-    private final Color defaultColor;
-    private final Game game;
+    private final Color defaultColor = Color.BEIGE;
+    private Game game;
     private final ArrayList<Country> adjacentCountries;
-    private final double layoutY;
-    private final double layoutX;
+    private double layoutY;
+    private double layoutX;
     private String imageURI;
 
     /**
@@ -35,7 +35,6 @@ public class Country {
      */
     public Country(String name, int value, int index, Game game, double offsetY, double offsetX) {
         this.name = name;
-        this.defaultColor = Color.BEIGE;
         this.value = value;
         this.selected = false;
         this.game = game;
@@ -44,6 +43,13 @@ public class Country {
         this.layoutX = offsetX;
         this.game.addCountry(this);
         this.adjacentCountries = new ArrayList<>();
+    }
+    
+    public Country(String name) {
+        this.name = name;
+        this.value = 1;
+        this.adjacentCountries = null;
+        this.troops = 0;
     }
 
     /**

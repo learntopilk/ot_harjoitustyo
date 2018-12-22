@@ -27,10 +27,10 @@ public class CountryTest {
     @Before
     public void setUp() {
         g = new Game();
-        //c = new Country("florida", 2, 0, g);
+        c = new Country("florida");
         c.setView(new CountryView(c));
     }
-    /*
+    
     @Test
     public void nameIsSetCorrectly() {
         String name = c.getName();
@@ -93,5 +93,5 @@ public class CountryTest {
     public void selectedProperly() {
         c.select();
         assertTrue(c.isSelected());
-    }*/
+    }
 }
