@@ -2,10 +2,7 @@ package gui;
 
 import game.Country;
 import game.Game;
-import game.Player;
 import java.io.PrintStream;
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.scene.image.Image;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -22,7 +19,6 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -39,8 +35,6 @@ public class StartScreen extends Application {
     private Scene gameScene;
     private Game game;
     private BackgroundImage bg;
-    private String playerInTurn;
-    private TextField phaseDisplay = new TextField();
     public PlayerDisplay pd;
     private Button endTurn;
 
@@ -52,9 +46,9 @@ public class StartScreen extends Application {
 
     public static void main(String[] args) {
         try {
-            //System.setErr(new PrintStream("/dev/null"));
+            System.setErr(new PrintStream("/dev/null"));
         } catch (Exception e) {
-            System.out.println("Couldnt stuff stuff to dev/null");
+            //
         }
         launch(args);
     }
@@ -65,6 +59,7 @@ public class StartScreen extends Application {
 
         this.stage = primaryStage;
         primaryStage.setTitle("M-RISK");
+        primaryStage.setResizable(false);
 
         Button startGame = new Button("Start Game");
         startGame.setOnAction((ActionEvent event) -> {
@@ -111,8 +106,6 @@ public class StartScreen extends Application {
     }
 
     public void update() {
-        this.playerInTurn = game.getCurrentPlayer().getName();
-        this.updateTurnDisplay();
         if (this.endTurn != null) {
             if (this.game.getPhase().equals("ATTACK")) {
                 this.endTurn.setVisible(true);
@@ -139,7 +132,6 @@ public class StartScreen extends Application {
     }
 
     private void quit() {
-        // TODO: see if saving is necessary here?
         System.exit(0);
     }
 
@@ -147,31 +139,10 @@ public class StartScreen extends Application {
         if (gameScene == null) {
             gameScene = createGameScene();
             gameScene.setOnMouseReleased((MouseEvent mouseEvent) -> {
-                //Timer timer = new Timer();
-                //timer.schedule(new TimerTask() {
-                 //   @Override
-                  //  public void run() {
-                        update();
-                    //    timer.cancel();
-                     //   timer.purge();
-                    //}
-                //}, 50);
+                update();
             });
         }
         stage.setScene(gameScene);
-    }
-
-    /**
-     * Updates the turn display to indicate whose turn it is. Utilizes a timer.
-     */
-    public void updateTurnDisplay() {
-        phaseDisplay.setText(this.game.getPhase() + ": " + playerInTurn);
-        Player cur = this.game.getCurrentPlayer();
-        if (cur == null) {
-            phaseDisplay.setStyle("-fx-control-inner-background: #" + Color.GRAY.toString().substring(2));
-        } else {
-            phaseDisplay.setStyle("-fx-control-inner-background: #" + this.game.getCurrentPlayer().getColor().toString().substring(2));
-        }
     }
 
     private Scene createGameScene() {
@@ -183,14 +154,6 @@ public class StartScreen extends Application {
         Button menuBtn = menuButton();
         pane.getChildren().add(menuBtn);
 
-//        updateTurnDisplay();
-//        phaseDisplay.setLayoutX(screenWidth - 100);
-//        phaseDisplay.setLayoutY(0);
-//        phaseDisplay.setMinHeight(40d);
-//        phaseDisplay.setMinWidth(300d);
-//        phaseDisplay.setDisable(true);
-//        pane.getChildren().add(phaseDisplay);
-        
         for (TextField t : pd.getAll()) {
             pane.getChildren().add(t);
         }
@@ -234,7 +197,7 @@ public class StartScreen extends Application {
         });
         return b;
     }
-    
+
     public void updatePhaseDisplay(String phase) {
         this.pd.updatePhase(phase);
     }

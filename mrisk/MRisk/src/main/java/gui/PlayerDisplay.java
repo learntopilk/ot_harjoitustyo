@@ -7,6 +7,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
@@ -22,31 +23,40 @@ public class PlayerDisplay {
     private TextField turnDisplay;
 
     public PlayerDisplay() {
-        p1Display = new TextField("p1");
-        p1Display.setMinHeight(40d);
-        p1Display.setMinWidth(200d);
-        p1Display.setLayoutY(150);
-        p1Display.setDisable(true);
-        p1Display.setStyle("-fx-control-inner-background: #" + Color.GREEN.toString().substring(2));
-
-        p2Display = new TextField("p2");
-        p2Display.setMinHeight(40d);
-        p2Display.setMinWidth(200d);
-        p2Display.setLayoutY(200);
-        p2Display.setDisable(true);
-        p2Display.setStyle("-fx-control-inner-background: #" + Color.PURPLE.toString().substring(2));
-
-        turnDisplay = new TextField("");
-        turnDisplay.setMinHeight(40d);
-        turnDisplay.setMinWidth(200d);
-        turnDisplay.setLayoutY(250);
-        turnDisplay.setDisable(true);
 
         phaseDisplay = new TextField("PHASE");
         phaseDisplay.setMinHeight(40d);
         phaseDisplay.setMinWidth(200d);
-        phaseDisplay.setLayoutY(300);
-        phaseDisplay.setDisable(true);
+        phaseDisplay.setLayoutY(70);
+        phaseDisplay.setEditable(false);
+        phaseDisplay.setMouseTransparent(true);
+        phaseDisplay.setFocusTraversable(false);
+
+        p1Display = new TextField("p1");
+        p1Display.setMinHeight(40d);
+        p1Display.setMinWidth(200d);
+        p1Display.setLayoutY(120);
+        p1Display.setStyle("-fx-control-inner-background: #" + Color.GREEN.toString().substring(2));
+        p1Display.setEditable(false);
+        p1Display.setMouseTransparent(true);
+        p1Display.setFocusTraversable(false);
+
+        p2Display = new TextField("p2");
+        p2Display.setMinHeight(40d);
+        p2Display.setMinWidth(200d);
+        p2Display.setLayoutY(170);
+        p2Display.setStyle("-fx-control-inner-background: #" + Color.PURPLE.toString().substring(2));
+        p2Display.setEditable(false);
+        p2Display.setMouseTransparent(true);
+        p2Display.setFocusTraversable(false);
+
+        turnDisplay = new TextField("TURN DISPLAY");
+        turnDisplay.setMinHeight(40d);
+        turnDisplay.setMinWidth(200d);
+        turnDisplay.setLayoutY(220);
+        turnDisplay.setEditable(false);
+        turnDisplay.setMouseTransparent(true);
+        turnDisplay.setFocusTraversable(false);
     }
 
     public TextField getTurnDisplay() {
@@ -66,12 +76,10 @@ public class PlayerDisplay {
     }
 
     public void updatePhase(String phase) {
-        System.out.println("updated phase");
-        this.phaseDisplay.setText(phase);
+        this.phaseDisplay.setText("Phase: " + phase);
     }
 
-    public void setTurn(String playerName, Color c) {
-        this.turnDisplay.setText(playerName);
+    public void setTurn( Color c) {
         this.turnDisplay.setStyle("-fx-control-inner-background: #" + c.toString().substring(2));
     }
 

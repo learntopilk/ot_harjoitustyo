@@ -21,7 +21,6 @@ public class Game {
     private List<Country> countries;
     private List<Connection> connections;
     private Country selectedCountry;
-    //private String endButtonText;
     private String phase;
     private int countriesLeftToSelect;
     private int troopsLeftToDeploy;
@@ -60,7 +59,6 @@ public class Game {
     }
 
     public void attachView(StartScreen s) {
-        System.out.println("attached");
         this.ss = s;
     }
 
@@ -73,6 +71,7 @@ public class Game {
         this.updatePhaseDisplay();
         this.calculateTroopsToDeploy();
         currentPlayer = p1;
+        this.ss.pd.setTurn(currentPlayer.getColor());
     }
 
     public void updatePhaseDisplay() {
@@ -97,6 +96,7 @@ public class Game {
     private void startAttackPhase() {
         phase = "ATTACK";
         this.updatePhaseDisplay();
+        this.ss.pd.setTurn(currentPlayer.getColor());
 
     }
 
@@ -144,10 +144,11 @@ public class Game {
      */
     public void startCountrySelection() {
         phase = "COUNTRYSELECTION";
-        this.updatePhaseDisplay();
+        //this.updatePhaseDisplay();
 
         countriesLeftToSelect = this.countries.size();
         currentPlayer = p1;
+        this.ss.pd.setTurn(currentPlayer.getColor());
         this.ss.pd.updatePhase(this.getPhase());
     }
 
@@ -169,8 +170,6 @@ public class Game {
             this.troopsLeftToDeploy += c.getTroopValue();
         }
         this.updateTroopDisplays();
-        //this.ss.pd.updatePlayer1TroopsToSet(p1.getTroopsToSet());
-        //this.ss.pd.updatePlayer2TroopsToSet(p2.getTroopsToSet());
     }
 
     /**
@@ -198,6 +197,7 @@ public class Game {
         } else {
             this.currentPlayer = p1;
         }
+        this.ss.pd.setTurn(currentPlayer.getColor());
     }
 
     public void updateTroopDisplays() {
@@ -316,6 +316,8 @@ public class Game {
 
     public void endGame(Player winner) {
         // END THE GAME
+        this.phase = "GAME OVER";
+        this.updatePhaseDisplay();
         System.out.println("The winner is " + winner.getName() + "!");
     }
 }

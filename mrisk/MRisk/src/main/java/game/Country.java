@@ -100,7 +100,7 @@ public class Country {
                 this.handleAttackPhaseClick("");
                 break;
             default:
-                System.out.println("Phase: " + game.getPhase());
+                break;
         }
     }
 

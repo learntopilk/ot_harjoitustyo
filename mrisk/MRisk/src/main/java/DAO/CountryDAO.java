@@ -68,9 +68,7 @@ public class CountryDAO {
 
     private void connectCountries() {
 
-        int i = 0;
         while (!connections.isEmpty()) {
-            i++;
             Connection conn = connections.pollFirst();
             Country end = this.findCountryByName(conn.getEnd());
             if (end == null) {

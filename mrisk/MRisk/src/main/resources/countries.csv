@@ -1,4 +1,4 @@
-Florida;1;/florida.png;453d;408d;Alabama;Georgia;
+Florida;2;/florida.png;453d;408d;Alabama;Georgia;
 Georgia;1;/georgia.png;289d;460d;Florida;Alabama;South%20Carolina;North%20Carolina;Tennessee;
 Alabama;1;/alabama.png;300d;367d;Florida;Georgia;Tennessee;Mississippi;
 South%20Carolina;1;/southcarolina.png;267d;539d;North%20Carolina;Georgia;
@@ -9,4 +9,4 @@ Arkansas;1;/arkansas.png;259d;135d;Louisiana;Mississippi;Tennessee;
 Kentucky;1;/kentucky.png;114d;308d;Tennessee;Virginia;West%20Virginia;
 Virginia;1;/virginia.png;57d;537d;North%20Carolina;Tennessee;Kentucky;West%20Virginia;
 West%20Virginia;1;/westvirginia.png;29d;538d;Virginia;Kentucky;
-North%20Carolina;1;/northcarolina.png;155d;510d;Virginia;Tennessee;Georgia;South%20Carolina;
+North%20Carolina;2;/northcarolina.png;155d;510d;Virginia;Tennessee;Georgia;South%20Carolina;
