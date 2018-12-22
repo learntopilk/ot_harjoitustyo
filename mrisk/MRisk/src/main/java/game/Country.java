@@ -24,6 +24,15 @@ public class Country {
     private final double layoutX;
     private String imageURI;
 
+    /**
+     * A new country object.
+     * @param name Name of the country
+     * @param value Troop value of the country (how many troops the owner gets in deployment)
+     * @param index Index of the country in the country list (Currently not in use; Set to 0)
+     * @param game The game to which the country belongs
+     * @param Yoffset layoutY value for the countryView that will represent the country
+     * @param Xoffset layoutX value for the countriView that will represent the country
+     */
     public Country(String name, int value, int index, Game game, double Yoffset, double Xoffset) {
         this.name = name;
         this.defaultColor = Color.BEIGE;

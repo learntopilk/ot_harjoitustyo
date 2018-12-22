@@ -23,7 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- *
+ * The main display for MRisk. Manages views and displays.
  * @author joonas
  */
 public class StartScreen extends Application {
@@ -39,6 +39,9 @@ public class StartScreen extends Application {
     public PlayerDisplay pd;
     private Button endTurn;
 
+    /**
+     * A new StartScreen with a new Game.
+     */
     public StartScreen() {
         game = new Game();
         this.pd = new PlayerDisplay();

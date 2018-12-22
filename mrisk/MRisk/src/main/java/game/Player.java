@@ -18,6 +18,9 @@ public class Player {
     private int troopsToSet;
     private int totalTroops;
     
+    /**
+     * Creates a dummy player object.
+     */
     public Player() {
         this.name = "Player";
         this.color = Color.BLUE;

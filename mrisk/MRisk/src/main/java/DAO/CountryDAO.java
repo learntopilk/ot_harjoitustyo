@@ -22,6 +22,10 @@ public class CountryDAO {
     private ArrayList<Country> countries;
     private Game game;
 
+    /**
+     * A new CountryDAO object for reading countries from a file.
+     * @param g The game to which the 
+     */
     public CountryDAO(Game g) {
         connections = new ArrayDeque<>();
         countries = new ArrayList<>();

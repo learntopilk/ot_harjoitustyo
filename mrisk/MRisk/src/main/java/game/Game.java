@@ -32,6 +32,9 @@ public class Game {
 
     }
 
+    /**
+     * Creates a new game.
+     */
     public Game() {
         this.countries = new ArrayList<>();
         this.connections = new ArrayList<>();

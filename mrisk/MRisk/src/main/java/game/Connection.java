@@ -15,6 +15,12 @@ public class Connection {
     private Country start;
     private String end;
     
+    /**
+     * A connection between two countries. As the country at the end may not have been generated,
+     * the name of the end will be given instead.
+     * @param start The country from which the connection starts
+     * @param end Name of the country to which the connection ends.
+     */
     public Connection(Country start, String end) {
         this.start = start;
         this.end = end;
