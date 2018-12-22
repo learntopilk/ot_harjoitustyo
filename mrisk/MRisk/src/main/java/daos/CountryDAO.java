@@ -3,9 +3,12 @@ package daos;
 import game.Connection;
 import game.Country;
 import game.Game;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,12 +42,15 @@ public class CountryDAO {
     public List readCountries() {
         List<Country> countries = new ArrayList<>();
         try {
-            Scanner map = new Scanner(new FileReader(new File("src/main/resources/countries.csv")));
-            while (map.hasNext()) {
-                this.countries.add(scrapeCountry(map.next(), this.game));
-            }
+            BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/resources/countries.csv")));
+            String s;
+            do {
+                s = txtReader.readLine();
+                if (s == null) break;
+                this.countries.add(scrapeCountry(s, this.game));
+            } while (s != null);
             connectCountries();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
         return this.countries;

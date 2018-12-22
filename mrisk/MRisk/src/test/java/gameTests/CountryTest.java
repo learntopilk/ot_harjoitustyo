@@ -88,10 +88,4 @@ public class CountryTest {
     public void defaultColorIsBeige() {
         assertEquals(c.getDefaultColor(), Color.BEIGE);
     }
-    
-    @Test
-    public void selectedProperly() {
-        c.select();
-        assertTrue(c.isSelected());
-    }
 }

@@ -4,14 +4,14 @@
 
 ### Purpose
 
-MRisk is a Risk clone. Two players fight each other for control of the Southeastern United States. At the beginning of each turn, the players receive a number of units to deploy, depending on how many and which states they currently control
+MRisk is a Risk clone. Two players fight each other for control of the Southeastern United States. At the beginning of each turn, the players receive a number of units to deploy, depending on how many and which states they currently control.
 
 The game ends when only one player remains.
 
 
 ### Users
 
-Only one user role exists: That of a unnamed player, represented by a color.
+Only one user role exists: That of an unnamed player, represented by a color.
 
 ### Views
 

@@ -54,15 +54,4 @@ public class GameTest {
     public void playerSelection() {
         assertEquals(g.getCurrentPlayer().getColor().toString(), Color.GREEN);
     }
-    /*
-    @Test
-    public void phaseMovements() {
-        
-    }
-    
-    @Test
-    public void gameStarting() {
-        g.start();
-        assertEquals("COUNTRYSELECTION" ,g.getPhase());
-    }*/
 }

@@ -2,20 +2,11 @@
 
 MRisk is a minimal implementation of the classic board game Risk. As a minimal requirement, the game will allow two human players to play a full game of Risk against each other in the Southeastern United States.
 
-I hope to be able to add more/larger maps once the map mechanics are better defined.
 
 ## Recent development
 
-At the moment, the game has two players, four states, and players may pick states. The actual game mechanics still need to be built.
+At the moment, the game has two players, four states, and players may pick states. Players may attack each other, conquer states, and move their troops around the map (a bit too liberally, but no time to fix it now).
 
-The next steps::
-
-1. Enabling troop deployment
-2. Display for showing the number of troops each state has
-3. Attack mechanics
-4. Victory conditions
-5. All of the states in the map included
-6. Possibility for additional players.
 
 
 ## Release

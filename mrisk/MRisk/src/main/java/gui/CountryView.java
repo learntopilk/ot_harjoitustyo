@@ -34,7 +34,7 @@ public class CountryView {
         this.country = country;
         this.game = g;
 
-        Image im = new Image(uri);
+        Image im = new Image("resources"+uri);
         ImageView countryView = new ImageView(im);
         this.i = countryView;
 
