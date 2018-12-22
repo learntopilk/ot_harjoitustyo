@@ -11,7 +11,7 @@ At the moment, the game has two players, four states, and players may pick state
 
 ## Release
 
-Check out my latest release [here](https://github.com/learntopilk/ot_harjoitustyo/releases/tag/viikko5). It's still terrible, but hey, at least you can pick countries.
+Check out my latest release [here](https://github.com/learntopilk/ot_harjoitustyo/releases/tag/1.3). It's pretty neat!
 
 
 ## Documentation
