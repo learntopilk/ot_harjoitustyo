@@ -24,7 +24,7 @@ Check out my latest release [here](https://github.com/learntopilk/ot_harjoitusty
 
 [Mandatory sequence diagram](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/sequence.png)
 
-About tests
+[Test report](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/testaus.md)
 
 [Time spent](https://github.com/learntopilk/ot_harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
